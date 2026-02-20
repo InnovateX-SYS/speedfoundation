@@ -1,0 +1,8 @@
+*.mp4
+*.webm
+*.mov
+*.avi
+*.zip
+*.rar
+node_modules
+.gi

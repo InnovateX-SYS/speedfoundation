@@ -2,7 +2,7 @@ import React from "react";
 import Nav from "../components/nav";
 import Footer from "../components/footer";
 
-const GetInTouch = () => {
+const Contact = () => {
   const [formData, setFormData] = React.useState({
     name: "",
     email: "",
@@ -41,7 +41,7 @@ const GetInTouch = () => {
         }}
       >
         {/* Dark green overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-green-900/60 via-green-700/50 to-green-500/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-br"></div>
         <div className="relative z-10 max-w-2xl mx-auto">
           <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-6 leading-tight text-white">
             Get In Touch
@@ -71,7 +71,7 @@ const GetInTouch = () => {
 
               {/* Email */}
               <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex items-start gap-4 hover:shadow-md transition-shadow duration-300 group">
-                <div className="w-12 h-12 rounded-xl bg-green-600 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-12 h-12 rounded-xl bg-green-500 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                   <svg
                     className="w-5 h-5 text-white"
                     fill="none"
@@ -101,7 +101,7 @@ const GetInTouch = () => {
 
               {/* Phone */}
               <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex items-start gap-4 hover:shadow-md transition-shadow duration-300 group">
-                <div className="w-12 h-12 rounded-xl bg-green-700 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-12 h-12 rounded-xl bg-green-500 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                   <svg
                     className="w-5 h-5 text-white"
                     fill="none"
@@ -166,7 +166,7 @@ const GetInTouch = () => {
               </div>
 
               {/* Social links */}
-              <div className="bg-green-700 rounded-2xl p-6">
+              <div className="bg-green-500 rounded-2xl p-6">
                 <h3 className="text-lg md:text-xl font-bold mb-4 md:mb-6 text-white">
                   Follow Us
                 </h3>
@@ -312,7 +312,7 @@ const GetInTouch = () => {
                 {/* Submit */}
                 <button
                   onClick={handleSubmit}
-                  className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-xl transition-all duration-300 text-sm flex items-center justify-center gap-2 group"
+                  className="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-4 rounded-xl transition-all duration-300 text-sm flex items-center justify-center gap-2 group"
                 >
                   Send Message
                   <svg
@@ -427,4 +427,4 @@ const GetInTouch = () => {
   );
 };
 
-export default GetInTouch;
+export default Contact;

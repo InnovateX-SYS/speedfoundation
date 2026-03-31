@@ -99,8 +99,8 @@ function Landing() {
       title: "Plant Tree, Save Earth & Lives Secure the Future",
       description:
         "Tree planting is an essential action in combating deforestation and climate change. Every tree we plant helps absorb carbon dioxide, purifies the air, and supports wildlife habitats. By taking small steps to protect and restore our planet, we are investing in a healthier, more sustainable future for generations to come.",
-      raised: 9000,
-      goal: 20000,
+      raised: 4000,
+      goal: 16000,
       percentage: 45,
       image: "/assets/afforestation-2.jpg",
     },
@@ -109,8 +109,8 @@ function Landing() {
       title: "Advocating for School Farms: Educating the Grassroots for a Sustainable Future",
       description:
         "School farms are powerful tools for educating students about sustainable agriculture, food systems, and environmental stewardship. By advocating for and supporting school farm programs, we can empower the next generation with hands-on learning experiences that foster a deeper connection to nature, promote healthy eating habits, and inspire future leaders in sustainability.",
-      raised: 10250,
-      goal: 15000,
+      raised: 6000,
+      goal: 10000,
       percentage: 68,
       image: "/assets/school-farming.jpg",
     },
@@ -449,8 +449,8 @@ function Landing() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[
-                  { number: "50,000", unit: "tons", desc: "Recycled over 50,000 tons of waste materials, preventing them from polluting our land and waterways" },
-                  { number: "20,000", desc: "Trained 20,000 community members in sustainable agriculture and disaster preparedness" },
+                  { number: "5000", unit: "tons", desc: "Recycled over 5000 tons of waste materials, preventing them from polluting our land and waterways" },
+                  { number: "12,000", desc: "Trained 12,000 community members in sustainable agriculture and disaster preparedness" },
                   { number: "1,694", desc: "Volunteers from around the world help realize our help" },
                   { number: "830", desc: "Launched 830 pilot programs focused on sustainable energy and water solutions" },
                 ].map((stat, idx) => (

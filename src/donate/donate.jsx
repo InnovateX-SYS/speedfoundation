@@ -463,10 +463,10 @@ export default function Donate() {
 
             {/* LEFT: FORM */}
             <div className="form-card">
-              <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 1.85rem)", color: "#111", marginBottom: 6, fontWeight: 700 }}>
+              <h2 style={{ fontSize: "clamp(40px, 3vw, 1.85rem)", color: "#111", marginBottom: 6, fontWeight: 700 }}>
                 Make a Donation
               </h2>
-              <p style={{ color: "#6b7280", fontSize: "0.9rem", marginBottom: 24, lineHeight: 1.65 }}>
+              <p style={{ color: "#6b7280", fontSize: "1.3rem", marginBottom: 24, lineHeight: 1.65 }}>
                 Choose an amount — or type your own. Every naira is traceable to real outcomes.
               </p>
 
@@ -476,7 +476,7 @@ export default function Donate() {
                   <div className="freq-wrap" style={{ marginBottom: 20 }}>
                     {[["once","Give Once"],["monthly","Give Monthly"]].map(([v,l]) => (
                       <button key={v} className="freq-btn" onClick={() => setFreq(v)}
-                        style={{ background: freq===v?"#fff":"transparent", color: freq===v?"#111":"#6b7280", boxShadow: freq===v?"0 1px 4px rgba(0,0,0,0.1)":"none" }}>
+                        style={{ background: freq===v?"#fff":"transparent", color: freq===v?"#111":"#6b7280", boxShadow: freq===v?"0 5px 9px rgba(0,0,0,0.1)":"none" }}>
                         {l}
                       </button>
                     ))}
@@ -486,10 +486,10 @@ export default function Donate() {
                     {AMOUNTS.map(a => (
                       <button key={a.val} className={`amt ${selected===a.val&&!custom?"on":""}`}
                         onClick={() => handlePresetClick(a.val)}>
-                        <div style={{ fontWeight: 700, fontSize: "0.95rem", marginBottom: 2, color: selected===a.val&&!custom?"#fff":"#111" }}>
+                        <div style={{ fontWeight: 500, fontSize: "1.40rem", marginBottom: 9, color: selected===a.val&&!custom?"#fff":"#111" }}>
                           {a.display}
                         </div>
-                        <div style={{ fontSize: "0.7rem", color: selected===a.val&&!custom?"rgba(255,255,255,0.72)":"#9ca3af" }}>
+                        <div style={{ fontSize: "1rem", color: selected===a.val&&!custom?"rgba(255,255,255,0.72)":"#9ca3af" }}>
                           {a.tag}
                         </div>
                       </button>
@@ -498,8 +498,8 @@ export default function Donate() {
 
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
                     <div style={{ flex: 1, height: 1, background: "#e5e7eb" }} />
-                    <span style={{ fontSize: "0.76rem", color: "#9ca3af", fontWeight: 500, whiteSpace: "nowrap" }}>or enter your own</span>
-                    <div style={{ flex: 1, height: 1, background: "#e5e7eb" }} />
+                    <span style={{ fontSize: "1.46rem", color: "#9ca3af", fontWeight: 500, whiteSpace: "nowrap" }}>or enter your own</span>
+                    <div style={{ flex: 1, height: 2, background: "#e5e7eb" }} />
                   </div>
 
                   <div style={{ position: "relative", marginBottom: custom && amount > 0 ? 14 : 0 }}>

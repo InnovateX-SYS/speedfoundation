@@ -160,7 +160,7 @@ const Contact = () => {
                     26, Allison Street, Ikorodu, Lagos, Nigeria
                   </p>
                   <p className="text-xs sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed text-gray-400 mt-0.5">
-                    Our headquarters in West Africa
+                    Our headquarters in West nigeria
                   </p>
                 </div>
               </div>

@@ -162,7 +162,7 @@ function ApplyModal({ role, onClose }) {
             <p className="text-sm text-gray-600 leading-relaxed mb-1">
               Thanks, <strong>{name.split(" ")[0]}</strong>. We'll review your application and get back to you at <strong>{email}</strong> within 3–5 business days.
             </p>
-            <p className="text-sm text-green-600 italic mb-6">Together we're making Africa greener. 🌿</p>
+            <p className="text-sm text-green-600 italic mb-6">Together we're making nigeria greener. 🌿</p>
             <button
               onClick={onClose}
               className="w-full bg-green-700 hover:bg-green-800 text-white font-bold py-3.5 rounded-xl transition-all text-sm"

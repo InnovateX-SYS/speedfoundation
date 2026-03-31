@@ -122,7 +122,7 @@ function Landing() {
       raised: 10000,
       goal: 12000,
       percentage: 90,
-      image: "/assets/water-from-river-africa.jpg",
+      image: "/assets/water-from-river-nigeria.jpg",
     },
   ];
 
@@ -359,7 +359,7 @@ function Landing() {
             <div className="w-full lg:w-1/2">
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-1 space-y-4">
-                  <img src="/assets/Regreening-Africa.jpg" alt="Regreening Africa" className="w-full h-48 md:h-64 object-cover rounded-lg" />
+                  <img src="/assets/Regreening-nigeria.jpg" alt="Regreening nigeria" className="w-full h-48 md:h-64 object-cover rounded-lg" />
                   <img src="/assets/water-help.webp" alt="Water Help" className="w-full h-48 md:h-64 object-cover rounded-lg" />
                 </div>
                 <div className="col-span-1 flex items-center">
@@ -408,7 +408,7 @@ function Landing() {
                   </h3>
                   <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                     {activeAboutTab === "aboutus" &&
-                      "Speed Foundation exists because Africa's land, water, and people are quietly asking for help. Across the continent, climate change, pollution, environmental loss, and water scarcity are threatening lives and livelihoods. We believe caring for Africa's environment is a shared responsibility to today's communities and future generations. Driven by compassion and urgency, we restore ecosystems and protect the land and water people depend on. Through reforestation, water conservation, and climate-resilient solutions, we help communities adapt and endure. At Speed Foundation, we are nurturing a healthier, more resilient Africa—together."}
+                      "Speed Foundation exists because nigeria's land, water, and people are quietly asking for help. Across the country, climate change, pollution, environmental loss, and water scarcity are threatening lives and livelihoods. We believe caring for nigeria's environment is a shared responsibility to today's communities and future generations. Driven by compassion and urgency, we restore ecosystems and protect the land and water people depend on. Through reforestation, water conservation, and climate-resilient solutions, we help communities adapt and endure. At Speed Foundation, we are nurturing a healthier, more resilient nigeria—together."}
                     {activeAboutTab === "mission" &&
                       "We protect and restore ecosystems by partnering with communities, governments, and conservation groups to preserve habitats and biodiversity. We promote green, inclusive economic growth through sustainable livelihoods like eco-tourism, organic farming, and responsible forestry. Through education, outreach, and policy advocacy, we empower individuals and stakeholders to adopt sustainable practices and support environmental protection. We lead reforestation and land rehabilitation projects, advance research on innovative sustainability solutions, and tackle pollution and waste to create healthier, resilient communities for future generations."}
                     {activeAboutTab === "vision" &&
@@ -444,7 +444,7 @@ function Landing() {
             <div className="w-full lg:w-3/5">
               <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">Our Impact</h2>
               <p className="text-white text-sm md:text-base lg:text-lg leading-relaxed mb-6 md:mb-8">
-                Since our founding, Speed Foundation has planted over 1 million trees, restored 10,000 hectares of degraded land, and provided clean water access to 50,000 people across Africa. Our community-led conservation projects have protected critical habitats for endangered species and improved biodiversity. Through education and advocacy, we've empowered thousands of individuals to adopt sustainable practices and advocate for stronger environmental policies. Our work has helped communities adapt to climate change impacts, build resilience, and create sustainable livelihoods that protect the environment for future generations.
+                Since our founding, Speed Foundation has planted over 1 million trees, restored 10,000 hectares of degraded land, and provided clean water access to 50,000 people across nigeria. Our community-led conservation projects have protected critical habitats for endangered species and improved biodiversity. Through education and advocacy, we've empowered thousands of individuals to adopt sustainable practices and advocate for stronger environmental policies. Our work has helped communities adapt to climate change impacts, build resilience, and create sustainable livelihoods that protect the environment for future generations.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

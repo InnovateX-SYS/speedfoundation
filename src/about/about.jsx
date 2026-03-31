@@ -60,7 +60,7 @@ const storyTimeline = [
     year: "2010",
     title: "Foundation",
     description:
-      "Speed Foundation was established with a mission to protect biodiversity and restore ecosystems across Africa.",
+      "Speed Foundation was established with a mission to protect biodiversity and restore ecosystems across nigeria.",
     side: "left",
   },
   {
@@ -73,7 +73,7 @@ const storyTimeline = [
   {
     year: "2016",
     title: "International Expansion",
-    description: "Expanded operations to 10 countries across 3 continents.",
+    description: "Expanded operations to 10 states across 3 countrys.",
     side: "left",
   },
   {
@@ -100,7 +100,7 @@ const impactColumns = [
     },
     {
       number: "1M+",
-      desc: "Trees planted across Africa to restore ecosystems and combat deforestation",
+      desc: "Trees planted across nigeria to restore ecosystems and combat deforestation",
     },
   ],
   [
@@ -111,7 +111,7 @@ const impactColumns = [
     {
       number: "10,000",
       unit: "ha",
-      desc: "Hectares of degraded land restored and rehabilitated across the continent",
+      desc: "Hectares of degraded land restored and rehabilitated across the country",
     },
   ],
   [
@@ -163,10 +163,10 @@ const About = () => {
             About Our Mission
           </h1>
           <p className="text-white/80 text-sm sm:text-base md:text-lg max-w-3xl mx-auto mb-8 md:mb-10 leading-relaxed">
-            Speed Foundation exists because Africa's land, water, and people are
-            quietly asking for help. Across the continent, climate change,
+            Speed Foundation exists because nigeria's land, water, and people are
+            quietly asking for help. Across the country, climate change,
             pollution, environmental loss, and water scarcity are threatening
-            lives and livelihoods. We believe caring for Africa's environment is
+            lives and livelihoods. We believe caring for nigeria's environment is
             a shared responsibility to today's communities and future
             generations. Driven by compassion and urgency, we restore ecosystems
             and protect the land and water people depend on.
@@ -254,7 +254,7 @@ const About = () => {
               <div className="relative rounded-3xl overflow-hidden group flex-1 min-h-[240px]">
                 <div className="absolute inset-0">
                   <img
-                    src="/assets/Regreening-Africa.jpg"
+                    src="/assets/Regreening-nigeria.jpg"
                     alt="Vision"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
@@ -299,11 +299,11 @@ const About = () => {
                   </div>
                   <div>
                     <h4 className="text-white font-bold text-base md:text-lg mb-1 md:mb-2">
-                      25 Countries
+                      25 states
                     </h4>
                     {/* ✅ Fixed text-bold (invalid) → font-medium */}
                     <p className="text-white/75 text-xs md:text-sm font-medium leading-relaxed">
-                      Operating across Africa and beyond with local community
+                      Operating across nigeria and beyond with local community
                       partners
                     </p>
                   </div>
@@ -360,7 +360,7 @@ const About = () => {
             <p className="text-white text-sm md:text-base lg:text-lg leading-relaxed mb-8 md:mb-12 text-center max-w-4xl mx-auto">
               Since our founding, Speed Foundation has planted over 1 million
               trees, restored 10,000 hectares of degraded land, and provided
-              clean water access to 50,000 people across Africa.
+              clean water access to 50,000 people across nigeria.
             </p>
 
             {/* ✅ Stacks to 1 col on mobile, 3 on desktop */}

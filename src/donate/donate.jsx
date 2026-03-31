@@ -354,7 +354,7 @@ const TRUST = [
   },
   {
     svg: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#15803d" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>,
-    title: "25 countries", sub: "Across Africa",
+    title: "25 states", sub: "Across nigeria",
   },
   {
     svg: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#15803d" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>,
@@ -413,9 +413,9 @@ export default function Donate() {
               <span className="fu label-sm" style={{ color: "#86efac", marginBottom: 14, display: "block" }}>
                 Speed Foundation — Donate
               </span>
-              <h1 className="fu d1 hero-title">Help Us Heal<br />Africa's Land</h1>
+              <h1 className="fu d1 hero-title">Help Us Heal<br />nigeria's Land</h1>
               <p className="fu d2 hero-body" style={{ maxWidth: 420 }}>
-                We plant trees, restore water sources, and train communities across 25 African countries. Real, lasting change.
+                We plant trees, restore water sources, and train communities across 25 nigerian states. Real, lasting change.
               </p>
 
               {/* fundraising bar */}
@@ -602,7 +602,7 @@ export default function Donate() {
                         We'll confirm your transfer within 24 hours and send a receipt to <strong>{email || "your email"}</strong>.
                       </p>
                       <p style={{ fontSize: "0.78rem", color: "#16a34a", fontStyle: "italic" }}>
-                        Because of you, Africa's land heals a little more today. 🌿
+                        Because of you, nigeria's land heals a little more today. 🌿
                       </p>
                     </div>
                   )}
@@ -633,7 +633,7 @@ export default function Donate() {
                     Receipt sent to <strong>{email}</strong>
                   </p>
                   <p style={{ fontSize: "0.84rem", color: "#15803d", fontStyle: "italic", marginBottom: 26 }}>
-                    Because of you, Africa's land heals a little more today. 🌿
+                    Because of you, nigeria's land heals a little more today. 🌿
                   </p>
                   <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
                     <button className="btn-green" style={{ width: "auto", padding: "11px 24px" }}
@@ -706,8 +706,8 @@ export default function Donate() {
         <div className="photo-strip">
           {[
             { src: "/assets/afforestation-2.jpg",         label: "Reforestation" },
-            { src: "/assets/water-from-river-africa.jpg", label: "Water Conservation" },
-            { src: "/assets/Regreening-Africa.jpg",       label: "Land Restoration" },
+            { src: "/assets/water-from-river-nigeria.jpg", label: "Water Conservation" },
+            { src: "/assets/Regreening-nigeria.jpg",       label: "Land Restoration" },
             { src: "/assets/Environment-Day.jpg",         label: "Community Events" },
           ].map(img => (
             <div key={img.label} className="ph" style={{ position: "relative", overflow: "hidden" }}>
@@ -733,7 +733,7 @@ export default function Donate() {
                 { stat: "1M+",  label: "Trees planted",          img: "/assets/afforestation.jpg" },
                 { stat: "50K",  label: "People with clean water", img: "/assets/water-help.webp" },
                 { stat: "20K",  label: "Farmers trained",         img: "/assets/school-farming.jpg" },
-                { stat: "25",   label: "Countries reached",       img: "/assets/Regreening-Africa.jpg" },
+                { stat: "25",   label: "states reached",       img: "/assets/Regreening-nigeria.jpg" },
               ].map(item => (
                 <div key={item.label} style={{ borderRadius: 12, overflow: "hidden", border: "1px solid #e5e7eb" }}>
                   <div className="ph" style={{ height: 100, overflow: "hidden" }}>

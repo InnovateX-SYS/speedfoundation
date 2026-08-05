@@ -19,10 +19,9 @@ const projects = [
     filterKey: "Environment",
     title: " Cross River National Park",
     description: "Protecting 100,000 hectares of pristine rainforest through community partnerships and sustainable land management.",
-    location: "South Nigeria",
-    duration: "2024 - Ongoing",
-    impact: "5,000 people impacted",
-    stat: "250,000 trees protected",
+    location: "Cross River, Nigeria",
+    duration: "2026 - Ongoing",
+    status: "Ongoing",
     image: "/assets/afforestation.jpg",
   },
   {
@@ -31,10 +30,9 @@ const projects = [
     filterKey: "Environment",
     title: "Coastal Reforestation Project",
     description: "Restoring coastal ecosystems through native tree planting and habitat rehabilitation across degraded shorelines.",
-    location: "West nigeria",
-    duration: "2023 - 2026",
-    impact: "3,000 people impacted",
-    stat: "75,000 trees planted",
+    location: "Ondo & Lagos, Nigeria",
+    duration: "2026 - 2029",
+    status: "Ongoing",
     image: "/assets/afforestation-2.jpg",
   },
   {
@@ -43,22 +41,20 @@ const projects = [
     filterKey: "Environment",
     title: "Marine Life Protection",
     description: "Establishing marine protected areas to preserve biodiversity and restore coral reefs along nigeria's coastline.",
-    location: "East nigeria Coast",
-    duration: "2024 - 2027",
-    impact: "8,000 people impacted",
-    stat: "10,000 sq km protected",
+    location: "Bayelsa & Rivers, Nigeria",
+    duration: "2026 - 2028",
+    status: "Pending",
     image: "/assets/water-from-river-nigeria.jpg",
   },
   {
     id: 4,
     category: "regreening",
     filterKey: "Environment",
-    title: "Sahel Regreening Initiative",
-    description: "Reversing desertification in the Sahel region through farmer-managed natural regeneration and tree planting.",
-    location: "Sahel, West nigeria",
-    duration: "2022 - Ongoing",
-    impact: "12,000 people impacted",
-    stat: "500,000 acres restored",
+    title: "Northern Nigeria Regreening Initiative",
+    description: "Reversing desertification across Nigeria's northern drylands through farmer-managed natural regeneration and tree planting.",
+    location: "Sokoto & Katsina, Nigeria",
+    duration: "2026 - Ongoing",
+    status: "Ongoing",
     image: "/assets/Regreening-nigeria.jpg",
   },
   {
@@ -67,10 +63,9 @@ const projects = [
     filterKey: "Environment",
     title: "Wetland Ecosystem Restoration",
     description: "Rehabilitating critical wetland habitats that serve as natural water filters and biodiversity hotspots.",
-    location: "Southern nigeria",
-    duration: "2023 - 2026",
-    impact: "4,500 people impacted",
-    stat: "2,000 ha restored",
+    location: "Delta & Bayelsa, Nigeria",
+    duration: "Starts 2026",
+    status: "Not Started",
     image: "/assets/water-help.webp",
   },
   {
@@ -79,10 +74,9 @@ const projects = [
     filterKey: "Environment",
     title: "Wildlife Corridor Restoration",
     description: "Creating safe wildlife passages and habitat connectivity for endangered species across fragmented landscapes.",
-    location: "Southeast nigeria",
-    duration: "2024 - 2028",
-    impact: "6,000 people impacted",
-    stat: "15 species protected",
+    location: "Enugu & Ebonyi, Nigeria",
+    duration: "2026 - 2029",
+    status: "Pending",
     image: "/assets/school-farming.jpg",
   },
 
@@ -93,10 +87,9 @@ const projects = [
     filterKey: "Education",
     title: "Sustainable Agriculture Program",
     description: "Training farmers in organic methods and climate-resilient agriculture practices to increase yields sustainably.",
-    location: "East nigeria",
+    location: "Enugu, Nigeria",
     duration: "2023 - Ongoing",
-    impact: "4,000 people impacted",
-    stat: "800 farmers trained",
+    status: "Ongoing",
     image: "/assets/school-farming.jpg",
   },
   {
@@ -105,10 +98,9 @@ const projects = [
     filterKey: "Education",
     title: "Green Schools Initiative",
     description: "Integrating environmental education into school curricula and building eco-friendly school gardens across rural communities.",
-    location: "Nigeria",
-    duration: "2023 - 2025",
-    impact: "15,000 students reached",
-    stat: "200 schools enrolled",
+    location: "Nationwide, Nigeria",
+    duration: "2026 - 2028",
+    status: "Pending",
     image: "/assets/afforestation.jpg",
   },
   {
@@ -117,10 +109,9 @@ const projects = [
     filterKey: "Education",
     title: "Climate Literacy Program",
     description: "Educating community leaders and youth on climate change, its impacts, and actionable local responses.",
-    location: "Ghana",
+    location: "Kaduna, Nigeria",
     duration: "2024 - Ongoing",
-    impact: "3,200 people trained",
-    stat: "120 communities reached",
+    status: "Ongoing",
     image: "/assets/afforestation-2.jpg",
   },
   {
@@ -129,10 +120,9 @@ const projects = [
     filterKey: "Education",
     title: "Eco-Entrepreneurship Academy",
     description: "Teaching young nigerians to build green businesses in renewable energy, waste management, and sustainable agriculture.",
-    location: "Kenya",
-    duration: "2024 - 2027",
-    impact: "2,800 youth trained",
-    stat: "450 businesses launched",
+    location: "Abuja, Nigeria",
+    duration: "Starts 2027",
+    status: "Not Started",
     image: "/assets/Regreening-nigeria.jpg",
   },
   {
@@ -141,10 +131,9 @@ const projects = [
     filterKey: "Education",
     title: "Environmental Research Hub",
     description: "Funding field research and academic partnerships to develop evidence-based conservation solutions for nigerian ecosystems.",
-    location: "South nigeria",
+    location: "Ibadan, Oyo, Nigeria",
     duration: "2022 - Ongoing",
-    impact: "50 researchers supported",
-    stat: "30 studies published",
+    status: "Ongoing",
     image: "/assets/water-from-river-nigeria.jpg",
   },
   {
@@ -153,10 +142,9 @@ const projects = [
     filterKey: "Education",
     title: "Women in Conservation",
     description: "Empowering women with environmental science training and leadership skills to become community conservation champions.",
-    location: "Tanzania",
-    duration: "2023 - 2026",
-    impact: "1,500 women trained",
-    stat: "80 female rangers certified",
+    location: "Jos, Plateau, Nigeria",
+    duration: "2026 - 2029",
+    status: "Pending",
     image: "/assets/second-section.png",
   },
 
@@ -167,10 +155,9 @@ const projects = [
     filterKey: "Development",
     title: "Solar Villages Initiative",
     description: "Bringing clean, renewable energy to remote communities through solar panel installation and maintenance training.",
-    location: "Rural nigeria",
+    location: "Rural Niger State, Nigeria",
     duration: "2025 - Ongoing",
-    impact: "2,500 people impacted",
-    stat: "500 homes powered",
+    status: "Ongoing",
     image: "/assets/second-section.png",
   },
   {
@@ -181,8 +168,7 @@ const projects = [
     description: "Installing sustainable boreholes, rainwater harvesting systems, and water purification units in underserved communities.",
     location: "Northern Nigeria",
     duration: "2023 - 2026",
-    impact: "20,000 people with clean water",
-    stat: "150 boreholes drilled",
+    status: "Ongoing",
     image: "/assets/water-help.webp",
   },
   {
@@ -191,10 +177,9 @@ const projects = [
     filterKey: "Development",
     title: "Eco-Tourism Development",
     description: "Developing sustainable eco-tourism infrastructure that generates community income while protecting natural habitats.",
-    location: "Rwanda",
-    duration: "2024 - 2027",
-    impact: "3,000 livelihoods created",
-    stat: "$2M community revenue",
+    location: "Obudu, Cross River, Nigeria",
+    duration: "Starts 2027",
+    status: "Not Started",
     image: "/assets/Regreening-nigeria.jpg",
   },
   {
@@ -205,8 +190,7 @@ const projects = [
     description: "Transforming community waste into compost, biogas, and recycled materials, creating jobs and reducing pollution.",
     location: "Lagos, Nigeria",
     duration: "2023 - Ongoing",
-    impact: "5,000 jobs created",
-    stat: "50,000 tons recycled",
+    status: "Ongoing",
     image: "/assets/afforestation.jpg",
   },
   {
@@ -215,10 +199,9 @@ const projects = [
     filterKey: "Development",
     title: "Green Infrastructure Project",
     description: "Building climate-resilient community infrastructure including flood barriers, green rooftops, and urban forests.",
-    location: "Accra, Ghana",
-    duration: "2024 - 2028",
-    impact: "40,000 residents protected",
-    stat: "25 km flood barriers built",
+    location: "Port Harcourt, Rivers, Nigeria",
+    duration: "2026 - 2028",
+    status: "Pending",
     image: "/assets/afforestation-2.jpg",
   },
   {
@@ -227,10 +210,9 @@ const projects = [
     filterKey: "Development",
     title: "Food Forest Initiative",
     description: "Establishing community food forests that provide nutritious food, restore biodiversity, and build household resilience.",
-    location: "Uganda",
-    duration: "2023 - 2026",
-    impact: "8,000 families fed",
-    stat: "300 food forests planted",
+    location: "Benue, Nigeria",
+    duration: "Starts 2027",
+    status: "Not Started",
     image: "/assets/school-farming.jpg",
   },
 
@@ -241,10 +223,9 @@ const projects = [
     filterKey: "Special Needs",
     title: "Inclusive Conservation Program",
     description: "Adapting conservation volunteer programs to include persons with disabilities, ensuring environmental work is accessible to all.",
-    location: "South nigeria",
+    location: "Akwa Ibom, Nigeria",
     duration: "2024 - Ongoing",
-    impact: "800 persons included",
-    stat: "45 adapted work sites",
+    status: "Ongoing",
     image: "/assets/Regreening-nigeria.jpg",
   },
   {
@@ -253,22 +234,20 @@ const projects = [
     filterKey: "Special Needs",
     title: "Climate Resilience for Elders",
     description: "Supporting elderly communities most vulnerable to climate impacts with adaptation resources, shelter upgrades, and care networks.",
-    location: "Rural Kenya",
-    duration: "2023 - 2026",
-    impact: "2,200 elders supported",
-    stat: "1,400 homes upgraded",
+    location: "Rural Kogi, Nigeria",
+    duration: "2026 - 2029",
+    status: "Pending",
     image: "/assets/water-help.webp",
   },
   {
     id: 21,
     category: "refugees",
     filterKey: "Special Needs",
-    title: "Refugee Green Zones",
-    description: "Creating sustainable green zones in and around refugee settlements to provide food security, clean air, and mental wellbeing.",
-    location: "Uganda",
-    duration: "2024 - 2027",
-    impact: "15,000 refugees served",
-    stat: "12 green zones established",
+    title: "IDP Settlement Green Zones",
+    description: "Creating sustainable green zones in and around displacement settlements in Nigeria's northeast to provide food security, clean air, and mental wellbeing.",
+    location: "Borno & Adamawa, Nigeria",
+    duration: "Starts 2028",
+    status: "Not Started",
     image: "/assets/afforestation.jpg",
   },
   {
@@ -277,10 +256,9 @@ const projects = [
     filterKey: "Special Needs",
     title: "Children's Nature Therapy",
     description: "Using nature-based therapy and outdoor programs to support the mental and emotional health of at-risk and traumatized children.",
-    location: "DRC",
+    location: "Maiduguri, Borno, Nigeria",
     duration: "2023 - Ongoing",
-    impact: "3,500 children supported",
-    stat: "60 therapy centers active",
+    status: "Ongoing",
     image: "/assets/afforestation-2.jpg",
   },
   {
@@ -289,10 +267,9 @@ const projects = [
     filterKey: "Special Needs",
     title: "Indigenous Land Rights Defense",
     description: "Supporting indigenous communities to legally protect their ancestral lands from deforestation and illegal resource extraction.",
-    location: "Central nigeria",
+    location: "Taraba, Nigeria",
     duration: "2022 - Ongoing",
-    impact: "10,000 indigenous people protected",
-    stat: "2.5M acres legally secured",
+    status: "Ongoing",
     image: "/assets/water-from-river-nigeria.jpg",
   },
   {
@@ -301,13 +278,24 @@ const projects = [
     filterKey: "Special Needs",
     title: "Pastoralist Climate Adaptation",
     description: "Helping nomadic and pastoralist communities adapt their herding practices to shifting climate patterns and drought cycles.",
-    location: "Horn of nigeria",
-    duration: "2024 - 2027",
-    impact: "6,000 families supported",
-    stat: "90% reduced livestock loss",
+    location: "Yobe & Jigawa, Nigeria",
+    duration: "2026 - 2027",
+    status: "Pending",
     image: "/assets/school-farming.jpg",
   },
 ];
+
+const STATUS_STYLES = {
+  Ongoing: "bg-green-100 text-green-700 border-green-200",
+  Pending: "bg-amber-100 text-amber-700 border-amber-200",
+  "Not Started": "bg-gray-100 text-gray-600 border-gray-200",
+};
+
+const STATUS_DOTS = {
+  Ongoing: "bg-green-500",
+  Pending: "bg-amber-500",
+  "Not Started": "bg-gray-400",
+};
 
 const Project = () => {
   const [language, setLanguage] = React.useState("English");
@@ -361,25 +349,6 @@ const Project = () => {
             conservation, and climate-resilient initiatives. Together, we can
             build a more sustainable and resilient environment for generations to come.
           </p>
-        </div>
-      </div>
-
-      {/* ========== STATS BAR ========== */}
-      <div className="w-full bg-white py-6 md:py-8 px-4 md:px-8 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-center">
-          {[
-            { number: "50+", label: "Active Projects" },
-            { number: "25", label: "states" },
-            { number: "500K+", label: "Trees Planted" },
-            { number: "100K+", label: "Lives Changed" },
-          ].map((stat, idx) => (
-            <div key={idx} className="flex flex-col items-center">
-              <span className="text-2xl md:text-3xl lg:text-4xl font-bold text-green-600">
-                {stat.number}
-              </span>
-              <span className="text-gray-500 text-xs md:text-sm mt-1">{stat.label}</span>
-            </div>
-          ))}
         </div>
       </div>
 
@@ -437,6 +406,12 @@ const Project = () => {
                       <span className="absolute top-3 right-3 md:top-4 md:right-4 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
                         {project.category}
                       </span>
+                      <span
+                        className={`absolute top-3 left-3 md:top-4 md:left-4 flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full border ${STATUS_STYLES[project.status]}`}
+                      >
+                        <span className={`w-1.5 h-1.5 rounded-full ${STATUS_DOTS[project.status]}`}></span>
+                        {project.status}
+                      </span>
                     </div>
 
                     {/* Card Content */}
@@ -463,20 +438,6 @@ const Project = () => {
                           </svg>
                           {project.duration}
                         </div>
-                        <div className="flex items-center gap-2 text-gray-500 text-sm">
-                          <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-                          </svg>
-                          {project.impact}
-                        </div>
-                      </div>
-
-                      {/* Stat line */}
-                      <div className="flex items-center gap-2 text-green-600 text-sm font-semibold mb-4 md:mb-5">
-                        <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                        </svg>
-                        {project.stat}
                       </div>
 
                       {/* Button */}

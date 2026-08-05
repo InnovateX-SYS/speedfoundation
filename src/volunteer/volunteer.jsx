@@ -55,14 +55,14 @@ const CheckIcon = () => (
 
 // ── Data ───────────────────────────────────────────────────────────────────
 const STATS = [
-  { val: "20,000+",   label: "Trees Planted" },
-  { val: "1,694", label: "Volunteers" },
-  { val: "25",    label: "states" },
-  { val: "₦47M",  label: "Funds Raised" },
+  { val: "Trees Planted",  label: "Reforesting degraded land" },
+  { val: "Volunteers",     label: "Active across nigeria" },
+  { val: "States Reached", label: "Communities we serve" },
+  { val: "Funds Raised",   label: "Directed into programs" },
 ];
 
 const AREAS = [
-  { icon: <ClimateIcon />,       title: "Climate Change",        desc: "Mobilizing global action to reduce carbon footprints and promote sustainable living practices through local initiatives." },
+  { icon: <ClimateIcon />,       title: "Climate Change",        desc: "Mobilizing nationwide action to reduce carbon footprints and promote sustainable living practices through local initiatives." },
   { icon: <ReforestationIcon />, title: "Reforestation",         desc: "Restoring natural habitats by planting native trees and managing forest health in critical biodiversity zones." },
   { icon: <ReformsIcon />,       title: "Environmental Reforms", desc: "Collaborating with policymakers to implement greener laws and support legislative changes for the environment." },
   { icon: <AdvocacyIcon />,      title: "Advocacy",              desc: "Amplifying voices for Earth. We campaign for environmental justice and public awareness on critical issues." },
@@ -72,11 +72,11 @@ const AREAS = [
 
 const ROLES = [
   { badge: "ON-SITE", onSite: true,  title: "Tree Planting Coordinator",  location: "Nairobi, Kenya / Amazon Basin", desc: "Lead local communities in reforestation events and maintain nursery health in our regional hubs." },
-  { badge: "REMOTE",  onSite: false, title: "Policy Advocate",            location: "Worldwide / Remote",            desc: "Research environmental policies and help draft advocacy letters for local and international government bodies." },
-  { badge: "REMOTE",  onSite: false, title: "Digital Educator",           location: "Worldwide / Remote",            desc: "Produce engaging content about climate change for our digital platforms and global audience." },
+  { badge: "REMOTE",  onSite: false, title: "Policy Advocate",            location: "Nigeria / Remote",            desc: "Research environmental policies and help draft advocacy letters for local and international government bodies." },
+  { badge: "REMOTE",  onSite: false, title: "Digital Educator",           location: "Nigeria / Remote",            desc: "Produce engaging content about climate change for our digital platforms and nigerian audience." },
   { badge: "ON-SITE", onSite: true,  title: "Water & Sanitation Officer", location: "Kano, Nigeria",                 desc: "Support communities with borehole projects, water purification systems, and hygiene education." },
   { badge: "ON-SITE", onSite: true,  title: "Community Farm Trainer",     location: "Enugu, Nigeria",                desc: "Train smallholder farmers in sustainable, climate-resilient agricultural practices." },
-  { badge: "REMOTE",  onSite: false, title: "Research Volunteer",         location: "Worldwide / Remote",            desc: "Assist the impact team with data collection, environmental research, and annual reporting." },
+  { badge: "REMOTE",  onSite: false, title: "Research Volunteer",         location: "Nigeria / Remote",            desc: "Assist the impact team with data collection, environmental research, and annual reporting." },
 ];
 
 // ── Apply Modal ────────────────────────────────────────────────────────────
@@ -224,7 +224,7 @@ export default function Volunteer() {
               className="text-white/80 leading-relaxed mb-7 max-w-md"
               style={{ fontSize: "clamp(0.9rem, 1.8vw, 1.05rem)" }}
             >
-              Join over 1,694 volunteers worldwide dedicated to climate action, reforestation, and advocacy. Your contribution matters.
+              Join our volunteers across nigeria dedicated to climate action, reforestation, and advocacy. Your contribution matters.
             </p>
 
             <div className="flex gap-3 flex-wrap">
@@ -253,7 +253,7 @@ export default function Volunteer() {
             <div key={s.label} className="py-8 px-4 text-center">
               <div
                 className="text-green-600 font-extrabold leading-none mb-2"
-                style={{ fontSize: "clamp(1.8rem, 4vw, 2.6rem)" }}
+                style={{ fontSize: "clamp(1.05rem, 2.2vw, 1.4rem)" }}
               >
                 {s.val}
               </div>
@@ -322,10 +322,10 @@ export default function Volunteer() {
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4">
             {[
-              { val: "10k+", label: "Trees Planted" },
-              { val: "2.5k", label: "Active Volunteers" },
-              { val: "15",   label: "States Impacted" },
-              { val: "850t", label: "CO₂ Offset" },
+              { val: "Trees Planted",     label: "Reforesting degraded land" },
+              { val: "Active Volunteers", label: "Giving their time" },
+              { val: "States Impacted",   label: "Communities we serve" },
+              { val: "CO₂ Offset",        label: "Emissions absorbed" },
             ].map((s, i) => (
               <div
                 key={s.label}
@@ -337,7 +337,7 @@ export default function Volunteer() {
               >
                 <div
                   className="text-green-400 font-black leading-none"
-                  style={{ fontSize: "clamp(2rem, 5vw, 2.8rem)" }}
+                  style={{ fontSize: "clamp(1.1rem, 2.4vw, 1.5rem)" }}
                 >
                   {s.val}
                 </div>

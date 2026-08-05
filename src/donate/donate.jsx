@@ -346,7 +346,7 @@ const TRUST = [
   },
   {
     svg: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#15803d" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
-    title: "CAC Registered", sub: "RC No. 1234567",
+    title: "CAC Registered", sub: "Verified non-profit",
   },
   {
     svg: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#15803d" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>,
@@ -354,11 +354,11 @@ const TRUST = [
   },
   {
     svg: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#15803d" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>,
-    title: "25 states", sub: "Across nigeria",
+    title: "Nationwide reach", sub: "Across nigeria",
   },
   {
-    svg: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#15803d" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>,
-    title: "78% to programs", sub: "Direct impact",
+    svg: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#15803d" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="17" y2="20"/><line x1="7" y1="4" x2="17" y2="20"/><line x1="4" y1="10" x2="20" y2="10"/><line x1="4" y1="14" x2="20" y2="14"/></svg>,
+    title: "Programs first", sub: "Direct impact",
   },
 ];
 
@@ -415,19 +415,19 @@ export default function Donate() {
               </span>
               <h1 className="fu d1 hero-title">Help Us Heal<br />nigeria's Land</h1>
               <p className="fu d2 hero-body" style={{ maxWidth: 420 }}>
-                We plant trees, restore water sources, and train communities across 25 nigerian states. Real, lasting change.
+                We plant trees, restore water sources, and train communities across nigeria. Real, lasting change.
               </p>
 
               {/* fundraising bar */}
               <div className="fu d3" style={{ maxWidth: 380, marginBottom: 24 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-                  <span style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.8rem" }}>₦47.2M raised of ₦50M goal</span>
-                  <span style={{ color: "#86efac", fontSize: "0.8rem", fontWeight: 700 }}>94%</span>
+                  <span style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.8rem" }}>₦24,000 raised of ₦100,000 goal</span>
+                  <span style={{ color: "#86efac", fontSize: "0.8rem", fontWeight: 700 }}>24%</span>
                 </div>
                 <div style={{ height: 5, background: "rgba(255,255,255,0.18)", borderRadius: 99, overflow: "hidden" }}>
-                  <div className="bar" style={{ "--w": "94%", height: "100%", background: "#22c55e", borderRadius: 99 }} />
+                  <div className="bar" style={{ "--w": "24%", height: "100%", background: "#22c55e", borderRadius: 99 }} />
                 </div>
-                <p style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.75rem", marginTop: 5 }}>1,694 generous donors this year</p>
+                <p style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.75rem", marginTop: 5 }}>Generous donors giving towards this year's goal</p>
               </div>
 
               <div className="fu d4 hero-btns">
@@ -730,17 +730,17 @@ export default function Donate() {
             </h2>
             <div className="impact-grid">
               {[
-                { stat: "1M+",  label: "Trees planted",          img: "/assets/afforestation.jpg" },
-                { stat: "50K",  label: "People with clean water", img: "/assets/water-help.webp" },
-                { stat: "20K",  label: "Farmers trained",         img: "/assets/school-farming.jpg" },
-                { stat: "25",   label: "states reached",       img: "/assets/Regreening-nigeria.jpg" },
+                { stat: "Trees Planted",   label: "Restoring forests on degraded land",       img: "/assets/afforestation.jpg" },
+                { stat: "Clean Water",     label: "Safe drinking water for rural communities", img: "/assets/water-help.webp" },
+                { stat: "Farmers Trained", label: "Climate-smart agriculture skills",          img: "/assets/school-farming.jpg" },
+                { stat: "States Reached",  label: "Projects running across nigeria",           img: "/assets/Regreening-nigeria.jpg" },
               ].map(item => (
                 <div key={item.label} style={{ borderRadius: 12, overflow: "hidden", border: "1px solid #e5e7eb" }}>
                   <div className="ph" style={{ height: 100, overflow: "hidden" }}>
                     <img src={item.img} alt={item.label} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   </div>
                   <div style={{ padding: "12px 14px" }}>
-                    <p style={{ fontSize: "clamp(1.5rem, 4vw, 2rem)", fontWeight: 700, color: "#15803d", fontFamily: "Lora, serif", marginBottom: 2 }}>{item.stat}</p>
+                    <p style={{ fontSize: "clamp(1.05rem, 2.2vw, 1.35rem)", fontWeight: 700, color: "#15803d", fontFamily: "Lora, serif", marginBottom: 4 }}>{item.stat}</p>
                     <p style={{ fontSize: "0.8rem", color: "#374151" }}>{item.label}</p>
                   </div>
                 </div>
@@ -754,7 +754,7 @@ export default function Donate() {
           <img src="/assets/afforestation-2.jpg" alt=""
             style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.22)" }} />
           <div style={{ position: "relative", zIndex: 1, textAlign: "center", padding: "56px 20px" }}>
-            <span className="label-sm" style={{ color: "#86efac", marginBottom: 12 }}>Join 1,694 Donors</span>
+            <span className="label-sm" style={{ color: "#86efac", marginBottom: 12 }}>Join Our Donors</span>
             <h2 style={{ color: "#fff", fontSize: "clamp(1.5rem, 4vw, 2.8rem)", fontWeight: 700, marginBottom: 12, marginTop: 4 }}>
               Be the reason a tree grows today
             </h2>

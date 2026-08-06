@@ -1,69 +1,56 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useI18n } from "../i18n/LanguageContext";
+import { LANGUAGES } from "../i18n/dictionary";
 
-const NAV_ROUTES = {
-  // English
-  "Home": "/",
-  "About": "/about",
-  "Projects": "/project",
-  "Blogs": "/blog",
-  "Contact": "/contact",
-  // Igbo
-  "Ụlọ": "/",
-  "Gbasara": "/about",
-  "Oru": "/project",
-  "Kpọtụrụ": "/contact",
-  // Yoruba
-  "Ile": "/",
-  "Nipa": "/about",
-  "Iṣẹ": "/project",
-  "Olubasọrọ": "/contact",
-  // French
-  "Accueil": "/",
-  "À propos": "/about",
-  "Projets": "/project",
-};
+// Canonical (English) labels drive the routes; the visible label is translated.
+const NAV_ITEMS = [
+  { label: "Home", to: "/" },
+  { label: "About", to: "/about" },
+  { label: "Projects", to: "/project" },
+  { label: "Blogs", to: "/blog" },
+  { label: "Contact", to: "/contact" },
+];
 
-const translations = {
-  English: { nav: ["Home", "About", "Projects", "Blogs", "Contact"] },
-  Igbo:    { nav: ["Ụlọ", "Gbasara", "Oru", "Blogs", "Kpọtụrụ"] },
-  Yoruba:  { nav: ["Ile", "Nipa", "Iṣẹ", "Blogs", "Olubasọrọ"] },
-  French:  { nav: ["Accueil", "À propos", "Projets", "Blogs", "Contact"] },
-};
-
-function Nav({ language, setLanguage, activeLink, setActiveLink }) {
+function Nav() {
+  const { t, language, setLanguage } = useI18n();
+  const { pathname } = useLocation();
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [underlineStyle, setUnderlineStyle] = useState({});
   const navRef = useRef(null);
 
-  const navLinks = translations[language].nav;
+  // Active link comes from the URL, so it survives navigation and language changes.
+  const activeLink =
+    NAV_ITEMS.find((item) => item.to !== "/" && pathname.startsWith(item.to))?.label ||
+    (pathname === "/" ? "Home" : "");
 
   useEffect(() => {
-  const updateUnderline = () => {
-    if (!navRef.current) return;
-    const activeLi = navRef.current.querySelector(`[data-link="${activeLink}"]`);
-    if (!activeLi) return; // ✅ guard — stops crash if link not found
-    const rect = activeLi.getBoundingClientRect();
-    const newWidth = `${rect.width}px`;
-    const newTransform = `translateX(${
-      rect.left + rect.width / 2 - navRef.current.offsetLeft - rect.width / 10
-    }px)`;
+    const updateUnderline = () => {
+      if (!navRef.current) return;
+      const activeLi = navRef.current.querySelector(`[data-link="${activeLink}"]`);
+      if (!activeLi) return;
+      const rect = activeLi.getBoundingClientRect();
+      const newWidth = `${rect.width}px`;
+      const newTransform = `translateX(${
+        rect.left + rect.width / 2 - navRef.current.offsetLeft - rect.width / 10
+      }px)`;
 
-    setUnderlineStyle((prev) => {
-      if (prev.width === newWidth && prev.transform === newTransform) return prev; // ✅ prevents re-render loop
-      return { width: newWidth, transform: newTransform };
-    });
-  };
+      setUnderlineStyle((prev) => {
+        if (prev.width === newWidth && prev.transform === newTransform) return prev;
+        return { width: newWidth, transform: newTransform };
+      });
+    };
 
-  const timer = setTimeout(updateUnderline, 0); // ✅ stored so it can be cleared
-  window.addEventListener("resize", updateUnderline);
+    const timer = setTimeout(updateUnderline, 0);
+    window.addEventListener("resize", updateUnderline);
 
-  return () => {
-    clearTimeout(timer);  // ✅ cleans up timer on unmount
-    window.removeEventListener("resize", updateUnderline);
-  };
-}, [activeLink, language]);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", updateUnderline);
+    };
+  }, [activeLink, language]);
+
   return (
     <nav className="w-full bg-gray-800 px-4 md:px-8 py-4">
       <div className="flex items-center justify-between">
@@ -79,16 +66,15 @@ function Nav({ language, setLanguage, activeLink, setActiveLink }) {
         {/* Desktop Nav Links */}
         <div className="hidden lg:flex items-center">
           <ul ref={navRef} className="flex space-x-6 xl:space-x-8 relative">
-            {navLinks.map((link) => (
-              <li key={link} data-link={link} className="relative">
+            {NAV_ITEMS.map((item) => (
+              <li key={item.label} data-link={item.label} className="relative">
                 <Link
-                  to={NAV_ROUTES[link] || "/"}
-                  onClick={() => setActiveLink(link)}
+                  to={item.to}
                   className={`cursor-pointer pb-2 block transition-colors whitespace-nowrap ${
-                    activeLink === link ? "text-white" : "text-gray-400 hover:text-gray-300"
+                    activeLink === item.label ? "text-white" : "text-gray-400 hover:text-gray-300"
                   }`}
                 >
-                  {link}
+                  {t(item.label)}
                 </Link>
               </li>
             ))}
@@ -114,13 +100,12 @@ function Nav({ language, setLanguage, activeLink, setActiveLink }) {
             </button>
             {showLanguageMenu && (
               <div className="absolute top-full right-0 mt-2 bg-gray-700 rounded-md shadow-lg overflow-hidden z-50 min-w-[120px]">
-                {Object.keys(translations).map((lang) => (
+                {LANGUAGES.map((lang) => (
                   <button
                     key={lang}
                     onClick={() => {
                       setLanguage(lang);
                       setShowLanguageMenu(false);
-                      setActiveLink(translations[lang].nav[0]);
                     }}
                     className={`w-full text-left px-4 py-2 text-white hover:bg-gray-600 transition-colors text-sm ${language === lang ? "bg-gray-600" : ""}`}
                   >
@@ -147,16 +132,16 @@ function Nav({ language, setLanguage, activeLink, setActiveLink }) {
       {mobileMenuOpen && (
         <div className="lg:hidden mt-4 pb-4">
           <ul className="flex flex-col space-y-3">
-            {navLinks.map((link) => (
-              <li key={link}>
+            {NAV_ITEMS.map((item) => (
+              <li key={item.label}>
                 <Link
-                  to={NAV_ROUTES[link] || "/"}
-                  onClick={() => { setActiveLink(link); setMobileMenuOpen(false); }}
+                  to={item.to}
+                  onClick={() => setMobileMenuOpen(false)}
                   className={`block py-2 px-4 rounded transition-colors ${
-                    activeLink === link ? "bg-green-600 text-white" : "text-gray-300 hover:bg-gray-700"
+                    activeLink === item.label ? "bg-green-600 text-white" : "text-gray-300 hover:bg-gray-700"
                   }`}
                 >
-                  {link}
+                  {t(item.label)}
                 </Link>
               </li>
             ))}

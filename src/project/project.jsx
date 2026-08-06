@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Nav from "../components/nav";
 import Footer from "../components/footer";
+import { useI18n } from "../i18n/LanguageContext";
 
 const categories = [
   "All Projects",
@@ -298,8 +299,7 @@ const STATUS_DOTS = {
 };
 
 const Project = () => {
-  const [language, setLanguage] = React.useState("English");
-  const [activeLink, setActiveLink] = React.useState("Projects");
+  const { t } = useI18n();
   const [activeCategory, setActiveCategory] = React.useState("All Projects");
   const [currentPage, setCurrentPage] = React.useState(1);
   const projectsPerPage = 6;
@@ -325,12 +325,7 @@ const Project = () => {
 };
   return (
     <div className="overflow-x-hidden">
-      <Nav
-        language={language}
-        setLanguage={setLanguage}
-        activeLink={activeLink}
-        setActiveLink={setActiveLink}
-      />
+      <Nav />
 
       {/* ========== HERO IMAGE ========== */}
       <div className="relative h-[320px] sm:h-[400px] md:h-[500px] w-full">
@@ -342,12 +337,10 @@ const Project = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-green-900/60 via-green-700/50 to-green-500/40"></div>
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-4">
           <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-6 leading-tight">
-            Nurturing a Greener Tomorrow
+            {t("Nurturing a Greener Tomorrow")}
           </h1>
           <p className="text-sm sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed">
-            Join us in transforming nigeria's future through reforestation, water
-            conservation, and climate-resilient initiatives. Together, we can
-            build a more sustainable and resilient environment for generations to come.
+            {t("Join us in transforming nigeria's future through reforestation, water conservation, and climate-resilient initiatives. Together, we can build a more sustainable and resilient environment for generations to come.")}
           </p>
         </div>
       </div>
@@ -386,7 +379,7 @@ const Project = () => {
 
           {filtered.length === 0 ? (
             <p className="text-center text-gray-400 text-lg py-20">
-              No projects found in this category.
+              {t("No projects found in this category.")}
             </p>
           ) : (
             <>
@@ -400,27 +393,27 @@ const Project = () => {
                     <div className="relative overflow-hidden">
                       <img
                         src={project.image}
-                        alt={project.title}
+                        alt={t(project.title)}
                         className="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-500"
                       />
                       <span className="absolute top-3 right-3 md:top-4 md:right-4 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
-                        {project.category}
+                        {t(project.category)}
                       </span>
                       <span
                         className={`absolute top-3 left-3 md:top-4 md:left-4 flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full border ${STATUS_STYLES[project.status]}`}
                       >
                         <span className={`w-1.5 h-1.5 rounded-full ${STATUS_DOTS[project.status]}`}></span>
-                        {project.status}
+                        {t(project.status)}
                       </span>
                     </div>
 
                     {/* Card Content */}
                     <div className="p-4 md:p-6 flex flex-col flex-grow">
                       <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">
-                        {project.title}
+                        {t(project.title)}
                       </h3>
                       <p className="text-gray-500 text-sm leading-relaxed mb-4 md:mb-5 flex-grow">
-                        {project.description}
+                        {t(project.description)}
                       </p>
 
                       {/* Meta */}
@@ -436,7 +429,7 @@ const Project = () => {
                           <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                           </svg>
-                          {project.duration}
+                          {t(project.duration)}
                         </div>
                       </div>
 
@@ -445,7 +438,7 @@ const Project = () => {
                         to="/donate"
                         className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2.5 md:py-3 px-6 rounded-xl text-center transition-colors text-sm"
                       >
-                        Learn More
+                        {t("Learn More")}
                       </Link>
                     </div>
                   </div>
@@ -511,16 +504,16 @@ const Project = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-green-900/60 to-green-500/40"></div>
         <div className="relative z-10 py-4">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white mb-4">
-            Support Our Projects
+            {t("Support Our Projects")}
           </h2>
           <p className="text-white/90 text-sm sm:text-base md:text-lg max-w-xl mx-auto mb-8">
-            Your contribution helps us expand our impact and create more sustainable solutions.
+            {t("Your contribution helps us expand our impact and create more sustainable solutions.")}
           </p>
           <Link
             to="/donate"
             className="inline-block bg-white text-green-600 font-semibold px-8 md:px-10 py-3 rounded-lg hover:bg-gray-50 transition-colors"
           >
-            Make a Donation
+            {t("Make a Donation")}
           </Link>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Nav from "../components/nav";
 import Footer from "../components/footer";
+import { useI18n } from "../i18n/LanguageContext";
 
 const STYLES = `
   @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap');
@@ -363,8 +364,8 @@ const TRUST = [
 ];
 
 export default function Donate() {
+  const { t } = useI18n();
   const [language, setLanguage]     = React.useState("English");
-  const [activeLink, setActiveLink] = React.useState("Donate");
   const [freq, setFreq]             = React.useState("once");
   const [selected, setSelected]     = React.useState(null);
   const [custom, setCustom]         = React.useState("");
@@ -400,7 +401,7 @@ export default function Donate() {
     <>
       <style>{STYLES}</style>
       <div style={{ background: "#f7f7f5", minHeight: "100vh" }}>
-        <Nav language={language} setLanguage={setLanguage} activeLink={activeLink} setActiveLink={setActiveLink} />
+        <Nav />
 
         {/* ── HERO ── */}
         <div style={{ position: "relative", height: "84vh", minHeight: 480, overflow: "hidden" }}>
@@ -411,28 +412,28 @@ export default function Donate() {
           <div style={{ position: "relative", zIndex: 2, height: "100%", display: "flex", alignItems: "center", padding: "0 5vw" }}>
             <div style={{ maxWidth: 560, width: "100%" }}>
               <span className="fu label-sm" style={{ color: "#86efac", marginBottom: 14, display: "block" }}>
-                Speed Foundation — Donate
+                {t("Speed Foundation — Donate")}
               </span>
-              <h1 className="fu d1 hero-title">Help Us Heal<br />nigeria's Land</h1>
+              <h1 className="fu d1 hero-title">Help Us Heal<br />{t("nigeria's Land")}</h1>
               <p className="fu d2 hero-body" style={{ maxWidth: 420 }}>
-                We plant trees, restore water sources, and train communities across nigeria. Real, lasting change.
+                {t("We plant trees, restore water sources, and train communities across nigeria. Real, lasting change.")}
               </p>
 
               {/* fundraising bar */}
               <div className="fu d3" style={{ maxWidth: 380, marginBottom: 24 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-                  <span style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.8rem" }}>₦24,000 raised of ₦100,000 goal</span>
+                  <span style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.8rem" }}>{t("₦24,000 raised of ₦100,000 goal")}</span>
                   <span style={{ color: "#86efac", fontSize: "0.8rem", fontWeight: 700 }}>24%</span>
                 </div>
                 <div style={{ height: 5, background: "rgba(255,255,255,0.18)", borderRadius: 99, overflow: "hidden" }}>
                   <div className="bar" style={{ "--w": "24%", height: "100%", background: "#22c55e", borderRadius: 99 }} />
                 </div>
-                <p style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.75rem", marginTop: 5 }}>Generous donors giving towards this year's goal</p>
+                <p style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.75rem", marginTop: 5 }}>{t("Generous donors giving towards this year's goal")}</p>
               </div>
 
               <div className="fu d4 hero-btns">
-                <a href="#give" className="hero-btn-primary">Donate Now</a>
-                <Link to="/volunteer" className="hero-btn-secondary">Volunteer Instead</Link>
+                <a href="#give" className="hero-btn-primary">{t("Donate Now")}</a>
+                <Link to="/volunteer" className="hero-btn-secondary">{t("Volunteer Instead")}</Link>
               </div>
             </div>
           </div>
@@ -443,13 +444,13 @@ export default function Donate() {
           <div style={{ maxWidth: 1060, margin: "0 auto", padding: "0 16px" }}>
             <div className="trust-bar">
               {TRUST.map((t) => (
-                <div key={t.title} className="trust-item">
+                <div key={t(t.title)} className="trust-item">
                   <div style={{ width: 44, height: 44, borderRadius: 10, background: "#f0fdf4", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                     {t.svg}
                   </div>
                   <div>
-                    <p style={{ fontSize: "0.86rem", fontWeight: 700, color: "#111", marginBottom: 1 }}>{t.title}</p>
-                    <p style={{ fontSize: "0.72rem", color: "#6b7280" }}>{t.sub}</p>
+                    <p style={{ fontSize: "0.86rem", fontWeight: 700, color: "#111", marginBottom: 1 }}>{t(t.title)}</p>
+                    <p style={{ fontSize: "0.72rem", color: "#6b7280" }}>{t(t.sub)}</p>
                   </div>
                 </div>
               ))}
@@ -464,10 +465,10 @@ export default function Donate() {
             {/* LEFT: FORM */}
             <div className="form-card">
               <h2 style={{ fontSize: "clamp(40px, 3vw, 1.85rem)", color: "#111", marginBottom: 6, fontWeight: 700 }}>
-                Make a Donation
+                {t("Make a Donation")}
               </h2>
               <p style={{ color: "#6b7280", fontSize: "1.3rem", marginBottom: 24, lineHeight: 1.65 }}>
-                Choose an amount — or type your own. Every naira is traceable to real outcomes.
+                {t("Choose an amount — or type your own. Every naira is traceable to real outcomes.")}
               </p>
 
               {/* STEP 1 */}
@@ -484,13 +485,13 @@ export default function Donate() {
 
                   <div className="amt-grid">
                     {AMOUNTS.map(a => (
-                      <button key={a.val} className={`amt ${selected===a.val&&!custom?"on":""}`}
+                      <button key={t(a.val)} className={`amt ${selected===a.val&&!custom?"on":""}`}
                         onClick={() => handlePresetClick(a.val)}>
                         <div style={{ fontWeight: 500, fontSize: "1.40rem", marginBottom: 9, color: selected===a.val&&!custom?"#fff":"#111" }}>
-                          {a.display}
+                          {t(a.display)}
                         </div>
                         <div style={{ fontSize: "1rem", color: selected===a.val&&!custom?"rgba(255,255,255,0.72)":"#9ca3af" }}>
-                          {a.tag}
+                          {t(a.tag)}
                         </div>
                       </button>
                     ))}
@@ -498,13 +499,13 @@ export default function Donate() {
 
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
                     <div style={{ flex: 1, height: 1, background: "#e5e7eb" }} />
-                    <span style={{ fontSize: "1.46rem", color: "#9ca3af", fontWeight: 500, whiteSpace: "nowrap" }}>or enter your own</span>
+                    <span style={{ fontSize: "1.46rem", color: "#9ca3af", fontWeight: 500, whiteSpace: "nowrap" }}>{t("or enter your own")}</span>
                     <div style={{ flex: 1, height: 2, background: "#e5e7eb" }} />
                   </div>
 
                   <div style={{ position: "relative", marginBottom: custom && amount > 0 ? 14 : 0 }}>
                     <span style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", fontWeight: 700, color: "#374151", fontSize: "0.9rem" }}>₦</span>
-                    <input className="field" type="text" placeholder="Type an amount"
+                    <input className="field" type="text" placeholder={t("Type an amount")}
                       value={custom} onChange={e => { setCustom(e.target.value); setSelected(null); }}
                       style={{ paddingLeft: 30 }} />
                   </div>
@@ -532,48 +533,48 @@ export default function Donate() {
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M19 12H5M12 5l-7 7 7 7"/>
                     </svg>
-                    Change amount
+                    {t("Change amount")}
                   </button>
 
                   <div className="summary-pill">
                     <div>
-                      <p style={{ fontSize: "0.68rem", color: "#9ca3af", marginBottom: 2, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.07em" }}>Amount</p>
+                      <p style={{ fontSize: "0.68rem", color: "#9ca3af", marginBottom: 2, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.07em" }}>{t("Amount")}</p>
                       <p style={{ fontSize: "clamp(1.3rem, 4vw, 1.65rem)", fontWeight: 700, color: "#111", fontFamily: "Lora, serif", lineHeight: 1 }}>{displayAmt}</p>
                     </div>
                     <div style={{ textAlign: "right" }}>
-                      <p style={{ fontSize: "0.68rem", color: "#9ca3af", marginBottom: 2, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.07em" }}>Frequency</p>
+                      <p style={{ fontSize: "0.68rem", color: "#9ca3af", marginBottom: 2, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.07em" }}>{t("Frequency")}</p>
                       <p style={{ fontSize: "0.92rem", fontWeight: 700, color: "#374151" }}>{freq==="once"?"One-time":"Monthly"}</p>
                     </div>
                   </div>
 
                   <div className="name-email-grid">
                     <div>
-                      <label style={{ display: "block", fontSize: "0.7rem", fontWeight: 700, color: "#374151", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>Full Name</label>
-                      <input className="field" type="text" placeholder="Amina Yusuf" value={name} onChange={e => setName(e.target.value)} />
+                      <label style={{ display: "block", fontSize: "0.7rem", fontWeight: 700, color: "#374151", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>{t("Full Name")}</label>
+                      <input className="field" type="text" placeholder={t("Amina Yusuf")} value={name} onChange={e => setName(e.target.value)} />
                     </div>
                     <div>
-                      <label style={{ display: "block", fontSize: "0.7rem", fontWeight: 700, color: "#374151", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>Email *</label>
-                      <input className="field" type="email" placeholder="amina@mail.com" value={email} onChange={e => setEmail(e.target.value)} />
+                      <label style={{ display: "block", fontSize: "0.7rem", fontWeight: 700, color: "#374151", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>{t("Email *")}</label>
+                      <input className="field" type="email" placeholder={t("amina@mail.com")} value={email} onChange={e => setEmail(e.target.value)} />
                     </div>
                   </div>
 
                   {/* Bank details */}
                   <div style={{ background: "#f9fafb", border: "1px solid #e5e7eb", borderRadius: 10, padding: "16px 18px", marginBottom: 18 }}>
                     <p style={{ fontSize: "0.7rem", fontWeight: 700, color: "#374151", textTransform: "uppercase", letterSpacing: "0.09em", marginBottom: 14 }}>
-                      Transfer to this account
+                      {t("Transfer to this account")}
                     </p>
                     <div className="bank-meta-grid">
                       <div>
-                        <p style={{ fontSize: "0.68rem", color: "#9ca3af", marginBottom: 3 }}>Account Name</p>
-                        <p style={{ fontSize: "0.9rem", fontWeight: 700, color: "#111" }}>{BANK.name}</p>
+                        <p style={{ fontSize: "0.68rem", color: "#9ca3af", marginBottom: 3 }}>{t("Account Name")}</p>
+                        <p style={{ fontSize: "0.9rem", fontWeight: 700, color: "#111" }}>{t(BANK.name)}</p>
                       </div>
                       <div>
-                        <p style={{ fontSize: "0.68rem", color: "#9ca3af", marginBottom: 3 }}>Bank</p>
+                        <p style={{ fontSize: "0.68rem", color: "#9ca3af", marginBottom: 3 }}>{t("Bank")}</p>
                         <p style={{ fontSize: "0.9rem", fontWeight: 700, color: "#111" }}>{BANK.bank}</p>
                       </div>
                     </div>
                     <div>
-                      <p style={{ fontSize: "0.68rem", color: "#9ca3af", marginBottom: 5 }}>Account Number</p>
+                      <p style={{ fontSize: "0.68rem", color: "#9ca3af", marginBottom: 5 }}>{t("Account Number")}</p>
                       <div style={{ display: "flex", alignItems: "center", gap: 10, background: "#fff", border: "1.5px solid #d1d5db", borderRadius: 8, padding: "10px 14px" }}>
                         <span style={{ fontFamily: "monospace", fontSize: "clamp(0.95rem, 3vw, 1.12rem)", fontWeight: 700, color: "#111", letterSpacing: "0.1em", flex: 1 }}>
                           {BANK.number}
@@ -584,12 +585,12 @@ export default function Donate() {
                       </div>
                     </div>
                     <p style={{ fontSize: "0.76rem", color: "#6b7280", marginTop: 10, lineHeight: 1.6 }}>
-                      Transfer <strong style={{ color: "#15803d" }}>{displayAmt}</strong> using your banking app, then tap the button below.
+                      Transfer <strong style={{ color: "#15803d" }}>{displayAmt}</strong> {t("using your banking app, then tap the button below.")}
                     </p>
                   </div>
 
                   <button className="btn-green" onClick={handleComplete} disabled={!email}>
-                    I've made the transfer
+                    {t("I've made the transfer")}
                   </button>
 
                   {confirmed && (
@@ -602,14 +603,14 @@ export default function Donate() {
                         We'll confirm your transfer within 24 hours and send a receipt to <strong>{email || "your email"}</strong>.
                       </p>
                       <p style={{ fontSize: "0.78rem", color: "#16a34a", fontStyle: "italic" }}>
-                        Because of you, nigeria's land heals a little more today. 🌿
+                        {t("Because of you, nigeria's land heals a little more today. 🌿")}
                       </p>
                     </div>
                   )}
 
                   {!confirmed && (
                     <p style={{ textAlign: "center", fontSize: "0.73rem", color: "#9ca3af", marginTop: 10 }}>
-                      🔒 256-bit SSL encrypted. Your details are safe.
+                      {t("🔒 256-bit SSL encrypted. Your details are safe.")}
                     </p>
                   )}
                 </div>
@@ -627,21 +628,21 @@ export default function Donate() {
                     Thank you{name ? `, ${name.split(" ")[0]}` : ""}!
                   </h3>
                   <p style={{ color: "#374151", marginBottom: 5, fontSize: "0.93rem" }}>
-                    Your donation of <strong>{displayAmt}</strong> was received.
+                    Your donation of <strong>{displayAmt}</strong> {t("was received.")}
                   </p>
                   <p style={{ color: "#9ca3af", fontSize: "0.83rem", marginBottom: 8 }}>
                     Receipt sent to <strong>{email}</strong>
                   </p>
                   <p style={{ fontSize: "0.84rem", color: "#15803d", fontStyle: "italic", marginBottom: 26 }}>
-                    Because of you, nigeria's land heals a little more today. 🌿
+                    {t("Because of you, nigeria's land heals a little more today. 🌿")}
                   </p>
                   <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
                     <button className="btn-green" style={{ width: "auto", padding: "11px 24px" }}
                       onClick={() => { setStep(1); setEmail(""); setName(""); setCustom(""); setSelected(null); setConfirmed(false); }}>
-                      Donate again
+                      {t("Donate again")}
                     </button>
                     <Link to="/" style={{ padding: "11px 24px", borderRadius: 8, background: "#f3f4f6", color: "#374151", fontWeight: 600, textDecoration: "none", fontSize: "0.9rem" }}>
-                      Back to home
+                      {t("Back to home")}
                     </Link>
                   </div>
                 </div>
@@ -653,8 +654,8 @@ export default function Donate() {
               <div className="ph" style={{ borderRadius: 12, overflow: "hidden", position: "relative", height: 210 }}>
                 <img src="/assets/water-help.webp" alt="Clean water project" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.62) 0%, transparent 55%)", display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "14px 16px" }}>
-                  <p style={{ color: "#fff", fontWeight: 700, fontSize: "0.86rem", marginBottom: 2 }}>Clean Water Project — Northern Nigeria</p>
-                  <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.74rem" }}>50,000 people now have access to safe water</p>
+                  <p style={{ color: "#fff", fontWeight: 700, fontSize: "0.86rem", marginBottom: 2 }}>{t("Clean Water Project — Northern Nigeria")}</p>
+                  <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.74rem" }}>{t("50,000 people now have access to safe water")}</p>
                 </div>
               </div>
 
@@ -663,10 +664,10 @@ export default function Donate() {
                   "My children no longer walk 5km every morning to fetch water. Speed Foundation changed our lives completely."
                 </p>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                  <div style={{ width: 34, height: 34, borderRadius: "50%", background: "#dcfce7", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, color: "#15803d", flexShrink: 0, fontSize: "0.8rem" }}>AY</div>
+                  <div style={{ width: 34, height: 34, borderRadius: "50%", background: "#dcfce7", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, color: "#15803d", flexShrink: 0, fontSize: "0.8rem" }}>{t("AY")}</div>
                   <div>
-                    <p style={{ fontWeight: 700, fontSize: "0.83rem", color: "#111" }}>Amina Yusuf</p>
-                    <p style={{ fontSize: "0.72rem", color: "#15803d" }}>Community Leader, Kano State</p>
+                    <p style={{ fontWeight: 700, fontSize: "0.83rem", color: "#111" }}>{t("Amina Yusuf")}</p>
+                    <p style={{ fontSize: "0.72rem", color: "#15803d" }}>{t("Community Leader, Kano State")}</p>
                   </div>
                 </div>
               </div>
@@ -674,22 +675,22 @@ export default function Donate() {
               <div className="ph" style={{ borderRadius: 12, overflow: "hidden", position: "relative", height: 165 }}>
                 <img src="/assets/school-farming.jpg" alt="Farmer training" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.58) 0%, transparent 55%)", display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "12px 14px" }}>
-                  <p style={{ color: "#fff", fontWeight: 700, fontSize: "0.84rem", marginBottom: 2 }}>Farmer Training — Enugu State</p>
-                  <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.72rem" }}>20,000 farmers trained</p>
+                  <p style={{ color: "#fff", fontWeight: 700, fontSize: "0.84rem", marginBottom: 2 }}>{t("Farmer Training — Enugu State")}</p>
+                  <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.72rem" }}>{t("20,000 farmers trained")}</p>
                 </div>
               </div>
 
               <div style={{ background: "#fff", borderRadius: 12, border: "1px solid #e5e7eb", padding: "16px 18px" }}>
-                <p style={{ fontWeight: 700, fontSize: "0.88rem", color: "#111", marginBottom: 14 }}>Where your money goes</p>
+                <p style={{ fontWeight: 700, fontSize: "0.88rem", color: "#111", marginBottom: 14 }}>{t("Where your money goes")}</p>
                 {[
                   { label: "Direct programs",   pct: 78, color: "#15803d" },
                   { label: "Community training", pct: 12, color: "#4ade80" },
                   { label: "Research",           pct: 6,  color: "#86efac" },
                   { label: "Operations",         pct: 4,  color: "#d1fae5" },
                 ].map(b => (
-                  <div key={b.label} style={{ marginBottom: 10 }}>
+                  <div key={t(b.label)} style={{ marginBottom: 10 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-                      <span style={{ fontSize: "0.8rem", color: "#374151" }}>{b.label}</span>
+                      <span style={{ fontSize: "0.8rem", color: "#374151" }}>{t(b.label)}</span>
                       <span style={{ fontSize: "0.8rem", fontWeight: 700, color: "#111" }}>{b.pct}%</span>
                     </div>
                     <div style={{ height: 5, background: "#f3f4f6", borderRadius: 99, overflow: "hidden" }}>
@@ -710,12 +711,12 @@ export default function Donate() {
             { src: "/assets/Regreening-nigeria.jpg",       label: "Land Restoration" },
             { src: "/assets/Environment-Day.jpg",         label: "Community Events" },
           ].map(img => (
-            <div key={img.label} className="ph" style={{ position: "relative", overflow: "hidden" }}>
-              <img src={img.src} alt={img.label} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            <div key={t(img.label)} className="ph" style={{ position: "relative", overflow: "hidden" }}>
+              <img src={img.src} alt={t(img.label)} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "flex-end", padding: 12, background: "rgba(0,0,0,0)", transition: "background 0.3s" }}
                 onMouseEnter={e => e.currentTarget.style.background = "rgba(0,0,0,0.42)"}
                 onMouseLeave={e => e.currentTarget.style.background = "rgba(0,0,0,0)"}>
-                <span style={{ color: "#fff", fontSize: "0.78rem", fontWeight: 700 }}>{img.label}</span>
+                <span style={{ color: "#fff", fontSize: "0.78rem", fontWeight: 700 }}>{t(img.label)}</span>
               </div>
             </div>
           ))}
@@ -724,9 +725,9 @@ export default function Donate() {
         {/* ── IMPACT NUMBERS ── */}
         <div className="section-pad" style={{ background: "#fff" }}>
           <div style={{ maxWidth: 1060, margin: "0 auto" }}>
-            <span className="label-sm" style={{ marginBottom: 8 }}>Real Results</span>
+            <span className="label-sm" style={{ marginBottom: 8 }}>{t("Real Results")}</span>
             <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.4rem)", color: "#111", marginBottom: 28, fontWeight: 700 }}>
-              What your donations have achieved
+              {t("What your donations have achieved")}
             </h2>
             <div className="impact-grid">
               {[
@@ -735,13 +736,13 @@ export default function Donate() {
                 { stat: "Farmers Trained", label: "Climate-smart agriculture skills",          img: "/assets/school-farming.jpg" },
                 { stat: "States Reached",  label: "Projects running across nigeria",           img: "/assets/Regreening-nigeria.jpg" },
               ].map(item => (
-                <div key={item.label} style={{ borderRadius: 12, overflow: "hidden", border: "1px solid #e5e7eb" }}>
+                <div key={t(item.label)} style={{ borderRadius: 12, overflow: "hidden", border: "1px solid #e5e7eb" }}>
                   <div className="ph" style={{ height: 100, overflow: "hidden" }}>
-                    <img src={item.img} alt={item.label} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    <img src={item.img} alt={t(item.label)} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   </div>
                   <div style={{ padding: "12px 14px" }}>
                     <p style={{ fontSize: "clamp(1.05rem, 2.2vw, 1.35rem)", fontWeight: 700, color: "#15803d", fontFamily: "Lora, serif", marginBottom: 4 }}>{item.stat}</p>
-                    <p style={{ fontSize: "0.8rem", color: "#374151" }}>{item.label}</p>
+                    <p style={{ fontSize: "0.8rem", color: "#374151" }}>{t(item.label)}</p>
                   </div>
                 </div>
               ))}
@@ -754,15 +755,15 @@ export default function Donate() {
           <img src="/assets/afforestation-2.jpg" alt=""
             style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.22)" }} />
           <div style={{ position: "relative", zIndex: 1, textAlign: "center", padding: "56px 20px" }}>
-            <span className="label-sm" style={{ color: "#86efac", marginBottom: 12 }}>Join Our Donors</span>
+            <span className="label-sm" style={{ color: "#86efac", marginBottom: 12 }}>{t("Join Our Donors")}</span>
             <h2 style={{ color: "#fff", fontSize: "clamp(1.5rem, 4vw, 2.8rem)", fontWeight: 700, marginBottom: 12, marginTop: 4 }}>
-              Be the reason a tree grows today
+              {t("Be the reason a tree grows today")}
             </h2>
             <p style={{ color: "rgba(255,255,255,0.62)", maxWidth: 400, margin: "0 auto 26px", lineHeight: 1.75, fontSize: "0.92rem" }}>
-              No amount is too small. Every naira is tracked and reported — you'll always know where it went.
+              {t("No amount is too small. Every naira is tracked and reported — you'll always know where it went.")}
             </p>
             <a href="#give" style={{ display: "inline-block", background: "#15803d", color: "#fff", padding: "13px 32px", borderRadius: 9, fontWeight: 700, fontSize: "0.95rem", textDecoration: "none" }}>
-              Donate Now
+              {t("Donate Now")}
             </a>
           </div>
         </div>

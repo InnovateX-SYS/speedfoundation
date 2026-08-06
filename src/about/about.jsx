@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Nav from "../components/nav";
 import Footer from "../components/footer";
+import { useI18n } from "../i18n/LanguageContext";
 
 // ✅ Data outside component
 const leaders = [
@@ -38,8 +39,7 @@ const leaders = [
 ];
 
 const About = () => {
-  const [language, setLanguage] = React.useState("English");
-  const [activeLink, setActiveLink] = React.useState("About");
+  const { t } = useI18n();
   const [leaderPage, setLeaderPage] = React.useState(0);
 
   const totalPages = Math.ceil(leaders.length / 3);
@@ -47,12 +47,7 @@ const About = () => {
 
   return (
     <div className="overflow-x-hidden">
-      <Nav
-        language={language}
-        setLanguage={setLanguage}
-        activeLink={activeLink}
-        setActiveLink={setActiveLink}
-      />
+      <Nav />
 
       {/* ========== HERO ========== */}
       <div
@@ -70,16 +65,10 @@ const About = () => {
         {/* Content — ✅ removed fixed w-[1000px], now fluid */}
         <div className="relative z-10 w-full max-w-4xl mx-auto">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight">
-            About Our Mission
+            {t("About Our Mission")}
           </h1>
           <p className="text-white/80 text-sm sm:text-base md:text-lg max-w-3xl mx-auto mb-8 md:mb-10 leading-relaxed">
-            Speed Foundation exists because nigeria's land, water, and people are
-            quietly asking for help. Across the country, climate change,
-            pollution, environmental loss, and water scarcity are threatening
-            lives and livelihoods. We believe caring for nigeria's environment is
-            a shared responsibility to today's communities and future
-            generations. Driven by compassion and urgency, we restore ecosystems
-            and protect the land and water people depend on.
+            {t("Speed Foundation exists because nigeria's land, water, and people are quietly asking for help. Across the country, climate change, pollution, environmental loss, and water scarcity are threatening lives and livelihoods. We believe caring for nigeria's environment is a shared responsibility to today's communities and future generations. Driven by compassion and urgency, we restore ecosystems and protect the land and water people depend on.")}
           </p>
         </div>
       </div>
@@ -92,13 +81,13 @@ const About = () => {
             <div className="h-px w-8 md:w-12 bg-green-500"></div>
             {/* ✅ Fixed huge text-[30px] — now responsive */}
             <span className="text-green-600 text-sm md:text-base font-bold uppercase tracking-widest">
-              Who We Are
+              {t("Who We Are")}
             </span>
             <div className="h-px w-8 md:w-12 bg-green-500"></div>
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-gray-900 text-center mb-10 md:mb-16 lg:mb-24">
-            What Drives Us Forward
+            {t("What Drives Us Forward")}
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
@@ -115,19 +104,15 @@ const About = () => {
               <div className="relative z-10 p-6 md:p-10 lg:p-12 h-full flex flex-col justify-between">
                 <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/20 text-white text-xs font-semibold px-4 py-2 rounded-full w-fit">
                   <span className="w-2 h-2 rounded-full bg-green-400 inline-block"></span>
-                  Our Mission
+                  {t("Our Mission")}
                 </div>
                 <div className="mt-8">
                   <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
                     Act with <br />
-                    Purpose
+                    {t("Purpose")}
                   </h3>
                   <p className="text-white/80 text-sm md:text-base leading-relaxed mb-6">
-                    We protect and restore ecosystems by partnering with
-                    communities, governments, and conservation groups. Through
-                    reforestation, water conservation, and climate-resilient
-                    solutions, we help communities adapt, endure, and thrive —
-                    not just survive.
+                    {t("We protect and restore ecosystems by partnering with communities, governments, and conservation groups. Through reforestation, water conservation, and climate-resilient solutions, we help communities adapt, endure, and thrive — not just survive.")}
                   </p>
                   <div className="flex flex-col gap-3">
                     {[
@@ -173,17 +158,14 @@ const About = () => {
                 <div className="relative z-10 p-6 md:p-8 min-h-[240px] flex flex-col justify-between">
                   <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/20 text-white text-xs font-semibold px-4 py-2 rounded-full w-fit">
                     <span className="w-2 h-2 rounded-full bg-yellow-400 inline-block"></span>
-                    Our Vision
+                    {t("Our Vision")}
                   </div>
                   <div className="mt-6">
                     <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3">
-                      A World in Harmony with Nature
+                      {t("A World in Harmony with Nature")}
                     </h3>
                     <p className="text-white/75 text-sm md:text-base leading-relaxed">
-                      We envision communities thriving alongside nature — where
-                      economic progress never comes at the cost of the
-                      environment, and future generations inherit a planet that
-                      is resilient, diverse, and full of opportunity.
+                      {t("We envision communities thriving alongside nature — where economic progress never comes at the cost of the environment, and future generations inherit a planet that is resilient, diverse, and full of opportunity.")}
                     </p>
                   </div>
                 </div>
@@ -209,11 +191,11 @@ const About = () => {
                   </div>
                   <div>
                     <h4 className="text-white font-bold text-base md:text-lg mb-1 md:mb-2">
-                      Nationwide Reach
+                      {t("Nationwide Reach")}
                     </h4>
                     {/* ✅ Fixed text-bold (invalid) → font-medium */}
                     <p className="text-white/75 text-xs md:text-sm font-medium leading-relaxed">
-                      Operating across nigeria with local community partners
+                      {t("Operating across nigeria with local community partners")}
                     </p>
                   </div>
                 </div>
@@ -236,11 +218,10 @@ const About = () => {
                   </div>
                   <div>
                     <h4 className="text-white font-bold text-base md:text-lg mb-1 md:mb-2">
-                      Our Volunteers
+                      {t("Our Volunteers")}
                     </h4>
                     <p className="text-white/60 text-xs md:text-sm font-medium leading-relaxed">
-                      Volunteers across nigeria united by a passion for
-                      environmental change
+                      {t("Volunteers across nigeria united by a passion for environmental change")}
                     </p>
                   </div>
                 </div>
@@ -256,10 +237,10 @@ const About = () => {
           <div className="text-center mb-10 md:mb-12">
             {/* ✅ Fixed text-4xl subtitle on mobile */}
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3">
-              Meet Our Leadership
+              {t("Meet Our Leadership")}
             </h2>
             <p className="text-base md:text-lg text-gray-500">
-              Experts driving environmental change
+              {t("Experts driving environmental change")}
             </p>
           </div>
 
@@ -274,7 +255,7 @@ const About = () => {
                   {leader.photo && (
                     <img
                       src={leader.photo}
-                      alt={leader.name}
+                      alt={t(leader.name)}
                       style={{ objectPosition: leader.focus || "50% 30%" }}
                       className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
@@ -332,13 +313,13 @@ const About = () => {
                 </div>
                 <div className="p-5 md:p-6 flex flex-col flex-grow">
                   <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-1">
-                    {leader.name}
+                    {t(leader.name)}
                   </h3>
                   <p className="text-green-600 font-semibold text-sm mb-3">
-                    {leader.role}
+                    {t(leader.role)}
                   </p>
                   <p className="text-gray-500 text-sm leading-relaxed mb-4 flex-grow">
-                    {leader.bio}
+                    {t(leader.bio)}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {leader.skills.map((skill, i) => (
@@ -421,23 +402,23 @@ const About = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-green-900/70 to-green-500/50"></div>
         <div className="relative z-10 py-4">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white mb-4">
-            Join Our Mission
+            {t("Join Our Mission")}
           </h2>
           <p className="text-white/90 text-sm sm:text-base md:text-lg max-w-xl mx-auto mb-8">
-            Be part of a global movement creating positive environmental change.
+            {t("Be part of a global movement creating positive environmental change.")}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               to="/volunteer"
               className="bg-white text-green-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-50 transition-colors min-w-[180px] text-center"
             >
-              Get Involved Today
+              {t("Get Involved Today")}
             </Link>
             <Link
               to="/donate"
               className="bg-transparent text-white font-semibold px-8 py-3 rounded-lg border border-white hover:bg-white/10 transition-colors min-w-[180px] text-center"
             >
-              Make a Donation
+              {t("Make a Donation")}
             </Link>
           </div>
         </div>

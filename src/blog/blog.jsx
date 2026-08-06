@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Nav from "../components/nav";
 import Footer from "../components/footer";
+import { useI18n } from "../i18n/LanguageContext";
 
 const categories = [
   "All Posts",
@@ -160,8 +161,7 @@ const posts = [
 ];
 
 const Blog = () => {
-  const [language, setLanguage] = React.useState("English");
-  const [activeLink, setActiveLink] = React.useState("Blogs");
+  const { t } = useI18n();
   const [activeCategory, setActiveCategory] = React.useState("All Posts");
   const [currentPage, setCurrentPage] = React.useState(1);
   const postsPerPage = 6;
@@ -184,12 +184,7 @@ const Blog = () => {
 
   return (
     <div className="overflow-x-hidden">
-      <Nav
-        language={language}
-        setLanguage={setLanguage}
-        activeLink={activeLink}
-        setActiveLink={setActiveLink}
-      />
+      <Nav />
 
       {/* ========== HERO ========== */}
       <div className="relative h-[280px] sm:h-[340px] md:h-[420px] w-full">
@@ -201,14 +196,13 @@ const Blog = () => {
         <div className="absolute inset-0 bg-black/55"></div>
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4">
           <span className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-green-400 mb-3">
-            Speed Foundation Journal
+            {t("Speed Foundation Journal")}
           </span>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-4">
-            Stories From the Field
+            {t("Stories From the Field")}
           </h1>
           <p className="text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed text-white/80">
-            Reporting, research, and reflections from our work across nigeria —
-            written by the people doing it.
+            {t("Reporting, research, and reflections from our work across nigeria — written by the people doing it.")}
           </p>
         </div>
       </div>
@@ -220,24 +214,24 @@ const Blog = () => {
             <div className="h-56 sm:h-72 lg:h-full lg:min-h-[340px] overflow-hidden">
               <img
                 src={featured.image}
-                alt={featured.title}
+                alt={t(featured.title)}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
             </div>
             <div className="p-6 md:p-10">
               <div className="flex items-center gap-3 mb-4">
                 <span className="bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
-                  {featured.category}
+                  {t(featured.category)}
                 </span>
                 <span className="text-gray-400 text-xs md:text-sm">
-                  Featured
+                  {t("Featured")}
                 </span>
               </div>
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 md:mb-4 leading-snug">
-                {featured.title}
+                {t(featured.title)}
               </h2>
               <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-5 md:mb-6">
-                {featured.excerpt}
+                {t(featured.excerpt)}
               </p>
               <div className="flex items-center gap-3 text-gray-500 text-xs md:text-sm mb-6">
                 <span className="font-semibold text-gray-700">
@@ -246,13 +240,13 @@ const Blog = () => {
                 <span className="w-1 h-1 rounded-full bg-gray-300"></span>
                 <span>{featured.date}</span>
                 <span className="w-1 h-1 rounded-full bg-gray-300"></span>
-                <span>{featured.readTime}</span>
+                <span>{t(featured.readTime)}</span>
               </div>
               <Link
                 to="/blog"
                 className="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-2.5 md:py-3 px-7 rounded-xl transition-colors text-sm"
               >
-                Read Story
+                {t("Read Story")}
               </Link>
             </div>
           </div>
@@ -283,7 +277,7 @@ const Blog = () => {
         <div className="max-w-7xl mx-auto">
           {visiblePosts.length === 0 ? (
             <p className="text-center text-gray-500 py-16">
-              No posts in this category yet — check back soon.
+              {t("No posts in this category yet — check back soon.")}
             </p>
           ) : (
             <>
@@ -296,20 +290,20 @@ const Blog = () => {
                     <div className="relative overflow-hidden">
                       <img
                         src={post.image}
-                        alt={post.title}
+                        alt={t(post.title)}
                         className="w-full h-48 md:h-52 object-cover hover:scale-105 transition-transform duration-500"
                       />
                       <span className="absolute top-3 left-3 md:top-4 md:left-4 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
-                        {post.category}
+                        {t(post.category)}
                       </span>
                     </div>
 
                     <div className="p-4 md:p-6 flex flex-col flex-grow">
                       <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 leading-snug">
-                        {post.title}
+                        {t(post.title)}
                       </h3>
                       <p className="text-gray-500 text-sm leading-relaxed mb-4 md:mb-5 flex-grow">
-                        {post.excerpt}
+                        {t(post.excerpt)}
                       </p>
 
                       <div className="flex items-center gap-2 text-gray-500 text-xs mb-4 flex-wrap">
@@ -319,14 +313,14 @@ const Blog = () => {
                         <span className="w-1 h-1 rounded-full bg-gray-300"></span>
                         <span>{post.date}</span>
                         <span className="w-1 h-1 rounded-full bg-gray-300"></span>
-                        <span>{post.readTime}</span>
+                        <span>{t(post.readTime)}</span>
                       </div>
 
                       <Link
                         to="/blog"
                         className="w-full border border-green-500 text-green-600 hover:bg-green-500 hover:text-white font-bold py-2.5 md:py-3 px-6 rounded-xl text-center transition-colors text-sm"
                       >
-                        Read More
+                        {t("Read More")}
                       </Link>
                     </div>
                   </article>
@@ -388,21 +382,20 @@ const Blog = () => {
         />
         <div className="absolute inset-0 bg-green-900/70 flex flex-col items-center justify-center text-center px-4">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 md:mb-4">
-            Get New Stories in Your Inbox
+            {t("Get New Stories in Your Inbox")}
           </h2>
           <p className="text-white/80 text-sm md:text-base mb-6 max-w-xl">
-            Field reports, project updates, and ways to get involved — sent when
-            we have something worth reading.
+            {t("Field reports, project updates, and ways to get involved — sent when we have something worth reading.")}
           </p>
           <div className="w-full max-w-xl">
             <div className="flex flex-col sm:flex-row bg-white rounded-[10px] overflow-hidden">
               <input
                 type="email"
-                placeholder="Enter your email address"
+                placeholder={t("Enter your email address")}
                 className="flex-1 px-4 md:px-6 py-3 md:py-4 focus:outline-none"
               />
               <button className="bg-green-600 text-white font-bold px-6 md:px-8 py-3 md:py-4 whitespace-nowrap hover:bg-green-700 transition-colors">
-                Subscribe
+                {t("Subscribe")}
               </button>
             </div>
           </div>

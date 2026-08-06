@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Nav from "../components/nav";
 import Footer from "../components/footer";
+import { useI18n } from "../i18n/LanguageContext";
 
 // ── SVG Icons ──────────────────────────────────────────────────────────────
 const ClimateIcon = () => (
@@ -81,6 +82,7 @@ const ROLES = [
 
 // ── Apply Modal ────────────────────────────────────────────────────────────
 function ApplyModal({ role, onClose }) {
+  const { t } = useI18n();
   const [name,      setName]      = React.useState("");
   const [email,     setEmail]     = React.useState("");
   const [message,   setMessage]   = React.useState("");
@@ -102,27 +104,27 @@ function ApplyModal({ role, onClose }) {
           <>
             <div className="mb-5">
               <span className={`inline-block text-xs font-bold uppercase tracking-widest px-2.5 py-1 rounded mb-2 ${role.onSite ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"}`}>
-                {role.badge}
+                {t(role.badge)}
               </span>
               <h3 className="text-2xl font-bold text-gray-900 leading-tight">
-                Apply for<br />{role.title}
+                Apply for<br />{t(role.title)}
               </h3>
               <p className="text-xs text-gray-400 mt-1">📍 {role.location}</p>
             </div>
 
             <div className="flex flex-col gap-3 mb-4">
               <div>
-                <label className="block text-xs font-bold text-gray-600 uppercase tracking-widest mb-1.5">Full Name *</label>
+                <label className="block text-xs font-bold text-gray-600 uppercase tracking-widest mb-1.5">{t("Full Name *")}</label>
                 <input
-                  type="text" placeholder="Amina Yusuf" value={name}
+                  type="text" placeholder={t("Amina Yusuf")} value={name}
                   onChange={e => setName(e.target.value)}
                   className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-800 placeholder-gray-300 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 transition-all"
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold text-gray-600 uppercase tracking-widest mb-1.5">Email Address *</label>
+                <label className="block text-xs font-bold text-gray-600 uppercase tracking-widest mb-1.5">{t("Email Address *")}</label>
                 <input
-                  type="email" placeholder="amina@mail.com" value={email}
+                  type="email" placeholder={t("amina@mail.com")} value={email}
                   onChange={e => setEmail(e.target.value)}
                   className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-800 placeholder-gray-300 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 transition-all"
                 />
@@ -130,10 +132,10 @@ function ApplyModal({ role, onClose }) {
               <div>
                 <label className="block text-xs font-bold text-gray-600 uppercase tracking-widest mb-1.5">
                   Why do you want to volunteer?{" "}
-                  <span className="text-gray-400 normal-case tracking-normal font-normal">(optional)</span>
+                  <span className="text-gray-400 normal-case tracking-normal font-normal">{t("(optional)")}</span>
                 </label>
                 <textarea
-                  rows={3} placeholder="Tell us a bit about yourself..." value={message}
+                  rows={3} placeholder={t("Tell us a bit about yourself...")} value={message}
                   onChange={e => setMessage(e.target.value)}
                   className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-800 placeholder-gray-300 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 transition-all resize-none"
                 />
@@ -144,13 +146,13 @@ function ApplyModal({ role, onClose }) {
               onClick={handleSubmit} disabled={!name || !email}
               className="w-full bg-green-700 hover:bg-green-800 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold py-3.5 rounded-xl transition-all text-sm"
             >
-              Send Application
+              {t("Send Application")}
             </button>
             <button
               onClick={onClose}
               className="w-full mt-3 text-gray-400 text-sm hover:text-gray-600 transition-colors bg-transparent border-none cursor-pointer"
             >
-              Cancel
+              {t("Cancel")}
             </button>
           </>
         ) : (
@@ -158,16 +160,16 @@ function ApplyModal({ role, onClose }) {
             <div className="w-16 h-16 rounded-full bg-green-50 border-2 border-green-500 flex items-center justify-center mx-auto mb-4">
               <CheckIcon />
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">Application sent!</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">{t("Application sent!")}</h3>
             <p className="text-sm text-gray-600 leading-relaxed mb-1">
-              Thanks, <strong>{name.split(" ")[0]}</strong>. We'll review your application and get back to you at <strong>{email}</strong> within 3–5 business days.
+              Thanks, <strong>{name.split(" ")[0]}</strong>. We'll review your application and get back to you at <strong>{email}</strong> {t("within 3–5 business days.")}
             </p>
-            <p className="text-sm text-green-600 italic mb-6">Together we're making nigeria greener. 🌿</p>
+            <p className="text-sm text-green-600 italic mb-6">{t("Together we're making nigeria greener. 🌿")}</p>
             <button
               onClick={onClose}
               className="w-full bg-green-700 hover:bg-green-800 text-white font-bold py-3.5 rounded-xl transition-all text-sm"
             >
-              Close
+              {t("Close")}
             </button>
           </div>
         )}
@@ -179,7 +181,6 @@ function ApplyModal({ role, onClose }) {
 // ── Main Page ──────────────────────────────────────────────────────────────
 export default function Volunteer() {
   const [language,   setLanguage]   = React.useState("English");
-  const [activeLink, setActiveLink] = React.useState("Volunteer");
   const [showAll,    setShowAll]    = React.useState(false);
   const [applying,   setApplying]   = React.useState(null);
 
@@ -187,7 +188,7 @@ export default function Volunteer() {
 
   return (
     <div className="w-full bg-[#f6f7f5] min-h-screen overflow-hidden">
-      <Nav language={language} setLanguage={setLanguage} activeLink={activeLink} setActiveLink={setActiveLink} />
+      <Nav />
 
       {/* ── HERO ── */}
       <div className="relative" style={{ paddingBottom: "80px" }}>
@@ -209,7 +210,7 @@ export default function Volunteer() {
             {/* pill */}
             <div className="inline-flex items-center gap-1.5 bg-green-500/20 border border-green-500/40 text-green-400 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 w-fit">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block" />
-              Active Movement 2024
+              {t("Active Movement 2024")}
             </div>
 
             <h1
@@ -217,14 +218,14 @@ export default function Volunteer() {
               style={{ fontSize: "clamp(2.2rem, 5.5vw, 4.2rem)" }}
             >
               Be the Change<br />
-              <span className="text-green-400">the Earth Needs</span>
+              <span className="text-green-400">{t("the Earth Needs")}</span>
             </h1>
 
             <p
               className="text-white/80 leading-relaxed mb-7 max-w-md"
               style={{ fontSize: "clamp(0.9rem, 1.8vw, 1.05rem)" }}
             >
-              Join our volunteers across nigeria dedicated to climate action, reforestation, and advocacy. Your contribution matters.
+              {t("Join our volunteers across nigeria dedicated to climate action, reforestation, and advocacy. Your contribution matters.")}
             </p>
 
             <div className="flex gap-3 flex-wrap">
@@ -232,13 +233,13 @@ export default function Volunteer() {
                 href="#roles"
                 className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold text-sm px-7 py-3.5 rounded-full transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-green-700/30 no-underline"
               >
-                Join the Movement
+                {t("Join the Movement")}
               </a>
               <Link
                 to="/project"
                 className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 hover:border-white/60 text-white font-semibold text-sm px-7 py-3.5 rounded-full transition-all no-underline"
               >
-                View All Projects
+                {t("View All Projects")}
               </Link>
             </div>
           </div>
@@ -250,15 +251,15 @@ export default function Volunteer() {
           style={{ width: "calc(100% - 48px)", maxWidth: 860 }}
         >
           {STATS.map((s) => (
-            <div key={s.label} className="py-8 px-4 text-center">
+            <div key={t(s.label)} className="py-8 px-4 text-center">
               <div
                 className="text-green-600 font-extrabold leading-none mb-2"
                 style={{ fontSize: "clamp(1.05rem, 2.2vw, 1.4rem)" }}
               >
-                {s.val}
+                {t(s.val)}
               </div>
               <div className="text-gray-500 text-sm font-normal">
-                {s.label}
+                {t(s.label)}
               </div>
             </div>
           ))}
@@ -271,23 +272,23 @@ export default function Volunteer() {
         <div className="flex justify-between items-end flex-wrap gap-3 mb-9">
           <div>
             <p className="text-sm font-bold uppercase tracking-widest text-green-600 mb-2">
-              What we work on
+              {t("What we work on")}
             </p>
             <h2
               className="font-extrabold text-gray-900 leading-tight"
               style={{ fontSize: "clamp(1.6rem, 3vw, 2.3rem)" }}
             >
-              Areas of Impact
+              {t("Areas of Impact")}
             </h2>
             <p className="text-sm text-gray-500 leading-relaxed mt-2 max-w-sm">
-              Choose where you want to make a difference. We have diverse initiatives covering every aspect of environmental conservation.
+              {t("Choose where you want to make a difference. We have diverse initiatives covering every aspect of environmental conservation.")}
             </p>
           </div>
           <Link
             to="/project"
             className="inline-flex items-center gap-1 text-green-600 hover:text-green-700 font-semibold text-sm no-underline transition-colors flex-shrink-0"
           >
-            Learn more about our work 
+            {t("Learn more about our work")} 
           </Link>
         </div>
 
@@ -295,7 +296,7 @@ export default function Volunteer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
           {AREAS.map(area => (
             <div
-              key={area.title}
+              key={t(area.title)}
               className="bg-white border border-gray-200 rounded-2xl p-6 hover:border-green-500 hover:shadow-lg hover:shadow-green-600/10 hover:-translate-y-1 transition-all duration-200"
             >
               <div
@@ -304,8 +305,8 @@ export default function Volunteer() {
               >
                 {area.icon}
               </div>
-              <h3 className="font-bold text-gray-900 text-base mb-2">{area.title}</h3>
-              <p className="text-sm text-gray-400 leading-relaxed">{area.desc}</p>
+              <h3 className="font-bold text-gray-900 text-base mb-2">{t(area.title)}</h3>
+              <p className="text-sm text-gray-400 leading-relaxed">{t(area.desc)}</p>
             </div>
           ))}
         </div>
@@ -318,7 +319,7 @@ export default function Volunteer() {
             className="text-white font-extrabold text-center mb-9"
             style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)" }}
           >
-            Our Collective Impact
+            {t("Our Collective Impact")}
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4">
             {[
@@ -328,7 +329,7 @@ export default function Volunteer() {
               { val: "CO₂ Offset",        label: "Emissions absorbed" },
             ].map((s, i) => (
               <div
-                key={s.label}
+                key={t(s.label)}
                 className="py-7 px-5 text-center"
                 style={{
                   borderRight: i % 2 === 0 ? "1px solid rgba(255,255,255,0.07)" : "none",
@@ -339,13 +340,13 @@ export default function Volunteer() {
                   className="text-green-400 font-black leading-none"
                   style={{ fontSize: "clamp(1.1rem, 2.4vw, 1.5rem)" }}
                 >
-                  {s.val}
+                  {t(s.val)}
                 </div>
                 <div
                   className="text-white/40 font-bold uppercase tracking-widest mt-2"
                   style={{ fontSize: "0.68rem" }}
                 >
-                  {s.label}
+                  {t(s.label)}
                 </div>
               </div>
             ))}
@@ -358,16 +359,16 @@ export default function Volunteer() {
         <div className="flex justify-between items-start flex-wrap gap-3 mb-6">
           <div>
             <p className="text-xs font-bold uppercase tracking-widest text-green-600 mb-2">
-              Now Recruiting
+              {t("Now Recruiting")}
             </p>
             <h2
               className="font-extrabold text-gray-900 leading-tight"
               style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)" }}
             >
-              Open Volunteer Roles
+              {t("Open Volunteer Roles")}
             </h2>
             <p className="text-sm text-gray-400 mt-1">
-              Find a position that matches your skills and passion.
+              {t("Find a position that matches your skills and passion.")}
             </p>
           </div>
           <button
@@ -381,7 +382,7 @@ export default function Volunteer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {visibleRoles.map(role => (
             <div
-              key={role.title}
+              key={t(role.title)}
               className="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-200"
             >
               <div className="flex justify-between items-center mb-3.5">
@@ -390,16 +391,16 @@ export default function Volunteer() {
                     role.onSite ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"
                   }`}
                 >
-                  {role.badge}
+                  {t(role.badge)}
                 </span>
                 <BriefcaseIcon />
               </div>
 
               <h3 className="font-bold text-gray-900 text-base leading-snug mb-2">
-                {role.title}
+                {t(role.title)}
               </h3>
               <p className="text-sm text-gray-400 leading-relaxed flex-1 mb-3">
-                {role.desc}
+                {t(role.desc)}
               </p>
 
               <div className="flex items-center gap-1 text-gray-400 text-xs mb-5">
@@ -411,7 +412,7 @@ export default function Volunteer() {
                 onClick={() => setApplying(role)}
                 className="w-full bg-green-700 hover:bg-green-800 text-white font-bold text-xs uppercase tracking-wider py-3 rounded-lg transition-all hover:-translate-y-px"
               >
-                Apply Now
+                {t("Apply Now")}
               </button>
             </div>
           ))}

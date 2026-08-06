@@ -1,8 +1,10 @@
 import React from "react";
 import Nav from "../components/nav";
 import Footer from "../components/footer";
+import { useI18n } from "../i18n/LanguageContext";
 
 const Contact = () => {
+  const { t } = useI18n();
   const [formData, setFormData] = React.useState({
     name: "",
     email: "",
@@ -10,8 +12,6 @@ const Contact = () => {
     message: "",
   });
 
-  const [language, setLanguage] = React.useState("English");
-  const [activeLink, setActiveLink] = React.useState("Contact");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,12 +24,7 @@ const Contact = () => {
 
   return (
     <div className="w-full bg-white overflow-hidden">
-      <Nav
-        language={language}
-        setLanguage={setLanguage}
-        activeLink={activeLink}
-        setActiveLink={setActiveLink}
-      />
+      <Nav />
 
       {/* ========== HERO HEADER ========== */}
       <div
@@ -44,11 +39,10 @@ const Contact = () => {
         <div className="absolute inset-0 bg-gradient-to-br"></div>
         <div className="relative z-10 max-w-2xl mx-auto">
           <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-6 leading-tight text-white">
-            Get In Touch
+            {t("Get In Touch")}
           </h1>
           <p className="text-sm sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed text-gray-200">
-            We'd love to hear from you. Reach out to discuss partnerships,
-            volunteer opportunities, or any questions about our work.
+            {t("We'd love to hear from you. Reach out to discuss partnerships, volunteer opportunities, or any questions about our work.")}
           </p>
         </div>
       </div>
@@ -61,11 +55,10 @@ const Contact = () => {
             <div className="lg:col-span-2 flex flex-col gap-5">
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-                  Contact Information
+                  {t("Contact Information")}
                 </h2>
                 <p className="text-sm sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed text-gray-400">
-                  Reach out through any of the channels below and we'll get back
-                  to you within 24 hours.
+                  {t("Reach out through any of the channels below and we'll get back to you within 24 hours.")}
                 </p>
               </div>
 
@@ -88,13 +81,13 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-sm sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed text-gray-400 font-semibold uppercase tracking-widest mb-1">
-                    Email Us
+                    {t("Email Us")}
                   </p>
                   <p className="text-gray-900 font-semibold text-sm">
-                    Speedfoundationnig@gmail.com
+                    {t("Speedfoundationnig@gmail.com")}
                   </p>
                   <p className="text-xs sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed text-gray-400 mt-0.5">
-                    We reply within 24 hours
+                    {t("We reply within 24 hours")}
                   </p>
                 </div>
               </div>
@@ -118,13 +111,13 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-sm sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed text-gray-400 font-semibold uppercase tracking-widest mb-1">
-                    Call Us
+                    {t("Call Us")}
                   </p>
                   <p className="text-gray-900 font-semibold text-sm">
                     +234 915 430 1413
                   </p>
                   <p className="text-xs sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed text-gray-400 mt-0.5">
-                    Mon – Fri, 9am – 5pm WAT
+                    {t("Mon – Fri, 9am – 5pm WAT")}
                   </p>
                 </div>
               </div>
@@ -154,13 +147,13 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-sm sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed text-gray-400 font-semibold uppercase tracking-widest mb-1">
-                    Visit Us
+                    {t("Visit Us")}
                   </p>
                   <p className="text-gray-900 font-semibold text-sm">
-                    26, Allison Street, Ikorodu, Lagos, Nigeria
+                    {t("26, Allison Street, Ikorodu, Lagos, Nigeria")}
                   </p>
                   <p className="text-xs sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed text-gray-400 mt-0.5">
-                    Our headquarters in West nigeria
+                    {t("Our headquarters in West nigeria")}
                   </p>
                 </div>
               </div>
@@ -168,7 +161,7 @@ const Contact = () => {
               {/* Social links */}
               <div className="bg-green-500 rounded-2xl p-6">
                 <h3 className="text-lg md:text-xl font-bold mb-4 md:mb-6 text-white">
-                  Follow Us
+                  {t("Follow Us")}
                 </h3>
                 <div className="flex gap-3 md:gap-4 mb-4 md:mb-6">
                   {/* Social icons */}
@@ -231,10 +224,10 @@ const Contact = () => {
             {/* RIGHT — Contact form */}
             <div className="lg:col-span-3 bg-white rounded-3xl shadow-sm border border-gray-100 p-8 md:p-10">
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-                Send Us a Message
+                {t("Send Us a Message")}
               </h2>
               <p className="text-sm sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed text-gray-400 mb-6">
-                Fill in the form below and we'll be in touch soon.
+                {t("Fill in the form below and we'll be in touch soon.")}
               </p>
 
               <div className="flex flex-col gap-5">
@@ -242,27 +235,27 @@ const Contact = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-sm font-semibold text-gray-600 uppercase tracking-widest mb-4">
-                      Full Name
+                      {t("Full Name")}
                     </label>
                     <input
                       type="text"
                       name="name"
-                      value={formData.name}
+                      value={t(formData.name)}
                       onChange={handleChange}
-                      placeholder="John Adeyemi"
+                      placeholder={t("John Adeyemi")}
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-800 placeholder-gray-300 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 transition-all"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-gray-600 uppercase tracking-widest mb-4">
-                      Email Address
+                      {t("Email Address")}
                     </label>
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="john@email.com"
+                      placeholder={t("john@email.com")}
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-800 placeholder-gray-300 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 transition-all"
                     />
                   </div>
@@ -271,7 +264,7 @@ const Contact = () => {
                 {/* Subject */}
                 <div>
                   <label className="block text-sm font-semibold text-gray-600 uppercase tracking-widest mb-4">
-                    Subject
+                    {t("Subject")}
                   </label>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                     {["Partnership", "Volunteer", "Donation", "Other"].map(
@@ -297,14 +290,14 @@ const Contact = () => {
                 {/* Message */}
                 <div>
                   <label className="block text-sm font-semibold text-gray-600 uppercase tracking-widest mb-4">
-                    Message
+                    {t("Message")}
                   </label>
                   <textarea
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     rows={5}
-                    placeholder="Tell us how we can help you..."
+                    placeholder={t("Tell us how we can help you...")}
                     className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-800 placeholder-gray-300 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 transition-all resize-none"
                   />
                 </div>
@@ -331,8 +324,7 @@ const Contact = () => {
                 </button>
 
                 <p className="text-center text-gray-500 text-sm">
-                  We respect your privacy. Your information will never be
-                  shared.
+                  {t("We respect your privacy. Your information will never be shared.")}
                 </p>
               </div>
             </div>
@@ -345,10 +337,10 @@ const Contact = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-             <span className="text-2xl md:text-3xl font-bold text-green-900 mb-2">Having Trouble locating,</span> Find Us
+             <span className="text-2xl md:text-3xl font-bold text-green-900 mb-2">{t("Having Trouble locating,")}</span> {t("Find Us")}
             </h2>
             <p className="text-sm sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed text-gray-400 mt-0.5">
-              Visit our headquarters in Lagos, Nigeria
+              {t("Visit our headquarters in Lagos, Nigeria")}
             </p>
           </div>
 
@@ -391,9 +383,9 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-gray-900 font-semibold text-medium">
-                  Speed Foundation HQ
+                  {t("Speed Foundation HQ")}
                 </p>
-                <p className="text-gray-400 text-sm">Lagos, Nigeria</p>
+                <p className="text-gray-400 text-sm">{t("Lagos, Nigeria")}</p>
               </div>
             </div>
 

@@ -1,92 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import Nav from "../components/nav";
 import Footer from "../components/footer";
+import { useI18n } from "../i18n/LanguageContext";
 
-// Navigation route mapping for all languages
-const NAV_ROUTES = {
-  // English
-  "Home": "/",
-  "About": "/about",
-  "Projects": "/project",
-  "Blogs": "/blog",
-  "Contact": "/contact",
-  // Igbo
-  "Ụlọ": "/",
-  "Gbasara": "/about",
-  "Oru": "/project",
-  "Kpọtụrụ": "/contact",
-  // Yoruba
-  "Ile": "/",
-  "Nipa": "/about",
-  "Iṣẹ": "/project",
-  "Olubasọrọ": "/contact",
-  // French
-  "Accueil": "/",
-  "À propos": "/about",
-  "Projets": "/project",
-};
 
 function Landing() {
+  const { t } = useI18n();
   const [currentImage, setCurrentImage] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState(false);
-  const [activeLink, setActiveLink] = useState("Home");
-  const [underlineStyle, setUnderlineStyle] = useState({});
   const [activeTab, setActiveTab] = useState("donate");
-  const [language, setLanguage] = useState("English");
-  const [showLanguageMenu, setShowLanguageMenu] = useState(false);
   const [activeAboutTab, setActiveAboutTab] = useState("aboutus");
   const [isVisible, setIsVisible] = useState(false);
-  const [showVideo, setShowVideo] = useState(false);
-  const [activeVideo, setActiveVideo] = useState(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const navRef = useRef(null);
   const sectionRef = useRef(null);
-
-  const translations = {
-    English: {
-      nav: ["Home", "About", "Projects", "Blogs", "Contact"],
-      hero: {
-        title: "Building A Sustainable Future",
-        titleBreak: "Together",
-        subtitle: "Protecting our planet through education, conservation, and community action",
-        donate: "Donate",
-        volunteer: "Volunteer",
-      },
-    },
-    Igbo: {
-      nav: ["Ụlọ", "Gbasara", "Oru", "Blogs", "Kpọtụrụ"],
-      hero: {
-        title: "Ịwulite Ọdịnihu Na-aga N'ihu",
-        titleBreak: "Ọnụ",
-        subtitle: "Ichekwa ụwa anyị site na mmụta, nchekwa, na omume obodo",
-        donate: "Nye onyinye",
-        volunteer: "Bụrụ onye ọrụ afọ ofufo",
-      },
-    },
-    Yoruba: {
-      nav: ["Ile", "Nipa", "Iṣẹ", "Blogs", "Olubasọrọ"],
-      hero: {
-        title: "Kikọ Ọjọ Iwaju Ti O Duro",
-        titleBreak: "Papọ",
-        subtitle: "Aabo aye wa nipasẹ ẹkọ, itọju, ati iṣe agbegbe",
-        donate: "Ṣetọrẹ",
-        volunteer: "Jẹ oluranlọwọ",
-      },
-    },
-    French: {
-      nav: ["Accueil", "À propos", "Projets", "Blogs", "Contact"],
-      hero: {
-        title: "Construire Un Avenir Durable",
-        titleBreak: "Ensemble",
-        subtitle: "Protéger notre planète par l'éducation, la conservation et l'action communautaire",
-        donate: "Faire un don",
-        volunteer: "Devenir bénévole",
-      },
-    },
-  };
-
-  const t = translations[language];
-  const navLinks = t.nav;
 
   const images = [
     "/assets/landing-hero-image3.jpg",
@@ -155,24 +81,6 @@ function Landing() {
     return () => clearInterval(interval);
   }, [imagesLoaded]);
 
-  // Update underline position
-  useEffect(() => {
-    const updateUnderline = () => {
-      if (!navRef.current) return;
-      const activeLi = navRef.current.querySelector(`[data-link="${activeLink}"]`);
-      if (activeLi) {
-        const rect = activeLi.getBoundingClientRect();
-        setUnderlineStyle({
-          width: `${rect.width}px`,
-          transform: `translateX(${rect.left + rect.width / 2 - navRef.current.offsetLeft - rect.width / 10}px)`,
-        });
-      }
-    };
-    setTimeout(updateUnderline, 0);
-    window.addEventListener("resize", updateUnderline);
-    return () => window.removeEventListener("resize", updateUnderline);
-  }, [activeLink, language]);
-
   // Intersection observer
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -193,102 +101,7 @@ function Landing() {
       {/* ========== HERO + NAV ========== */}
       <div className="w-full min-h-screen flex flex-col bg-gray-900/50">
 
-        {/* Navigation */}
-        <nav className="w-full bg-gray-800 px-4 md:px-8 py-4">
-          <div className="flex items-center justify-between">
-
-            {/* Logo */}
-            <div className="flex items-center gap-2 md:gap-3">
-              <div className="h-10 w-10 md:h-12 md:w-12 rounded-full overflow-hidden bg-white flex items-center justify-center">
-                <img src="/assets/s-f-logo.png" alt="Logo" className="w-full h-full" />
-              </div>
-              <p className="text-white font-semibold text-sm md:text-base lg:text-lg">Speed Foundation</p>
-            </div>
-
-            {/* Desktop Nav Links */}
-            <div className="hidden lg:flex items-center">
-              <ul ref={navRef} className="flex space-x-6 xl:space-x-8 relative">
-                {navLinks.map((link) => (
-                  <li key={link} data-link={link} className="relative">
-                    <Link
-                      to={NAV_ROUTES[link] || "/"}
-                      onClick={() => setActiveLink(link)}
-                      className={`cursor-pointer pb-2 block transition-colors whitespace-nowrap ${
-                        activeLink === link ? "text-white" : "text-gray-400 hover:text-gray-300"
-                      }`}
-                    >
-                      {link}
-                    </Link>
-                  </li>
-                ))}
-                <span
-                  className="absolute bottom-0 left-[-50px] h-0.5 bg-green-500 transition-all duration-300 ease-out"
-                  style={underlineStyle}
-                ></span>
-              </ul>
-            </div>
-
-            {/* Language + Mobile Menu */}
-            <div className="flex items-center gap-2 md:gap-4">
-              {/* Language Selector */}
-              <div className="relative">
-                <button
-                  onClick={() => setShowLanguageMenu(!showLanguageMenu)}
-                  className="flex items-center gap-1 md:gap-2 bg-gray-700 text-white px-2 md:px-4 py-2 rounded-md hover:bg-gray-600 transition-colors"
-                >
-                  <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-                  </svg>
-                  <span className="text-xs md:text-sm font-medium hidden sm:inline">{language}</span>
-                </button>
-                {showLanguageMenu && (
-                  <div className="absolute top-full right-0 mt-2 bg-gray-700 rounded-md shadow-lg overflow-hidden z-50 min-w-[120px]">
-                    {Object.keys(translations).map((lang) => (
-                      <button
-                        key={lang}
-                        onClick={() => { setLanguage(lang); setShowLanguageMenu(false); setActiveLink(translations[lang].nav[0]); }}
-                        className={`w-full text-left px-4 py-2 text-white hover:bg-gray-600 transition-colors text-sm ${language === lang ? "bg-gray-600" : ""}`}
-                      >
-                        {lang}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Mobile Menu Button */}
-              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="lg:hidden text-white p-2">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  {mobileMenuOpen
-                    ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  }
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <div className="lg:hidden mt-4 pb-4">
-              <ul className="flex flex-col space-y-3">
-                {navLinks.map((link) => (
-                  <li key={link}>
-                    <Link
-                      to={NAV_ROUTES[link] || "/"}
-                      onClick={() => { setActiveLink(link); setMobileMenuOpen(false); }}
-                      className={`block py-2 px-4 rounded transition-colors ${
-                        activeLink === link ? "bg-green-600 text-white" : "text-gray-300 hover:bg-gray-700"
-                      }`}
-                    >
-                      {link}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </nav>
+        <Nav />
 
         {/* Hero Carousel */}
         <div className="relative flex-1 min-h-[500px] md:min-h-[600px] lg:min-h-[700px] w-full overflow-hidden flex justify-center items-center">
@@ -303,10 +116,10 @@ function Landing() {
 
           <div className="relative z-10 w-full max-w-[90%] md:max-w-[80%] lg:max-w-5xl px-4 text-center">
             <h1 className="text-white font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight mb-4 md:mb-6">
-              {t.hero.title} <br />{t.hero.titleBreak}
+              {t("Building A Sustainable Future")} <br />{t("Together")}
             </h1>
             <p className="text-white text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-medium mb-8 md:mb-12 px-2">
-              {t.hero.subtitle}
+              {t("Protecting our planet through education, conservation, and community action")}
             </p>
 
             {/* Toggle Buttons */}
@@ -322,7 +135,7 @@ function Landing() {
                   <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                   </svg>
-                  <span className="font-semibold text-xs sm:text-sm md:text-base">{t.hero.donate}</span>
+                  <span className="font-semibold text-xs sm:text-sm md:text-base">{t("Donate")}</span>
                 </Link>
                 <Link
                   to="/volunteer"
@@ -334,7 +147,7 @@ function Landing() {
                   <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
-                  <span className="font-semibold text-xs sm:text-sm md:text-base">{t.hero.volunteer}</span>
+                  <span className="font-semibold text-xs sm:text-sm md:text-base">{t("Volunteer")}</span>
                 </Link>
               </div>
             </div>
@@ -371,7 +184,7 @@ function Landing() {
 
             {/* Content */}
             <div className="w-full lg:w-1/2">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-green-700 mb-6 text-center lg:text-left">Who We Are?</h2>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-green-700 mb-6 text-center lg:text-left">{t("Who We Are?")}</h2>
 
               <div className="bg-white p-4 md:p-6 rounded-lg ">
                 {/* Tabs */}
@@ -388,7 +201,7 @@ function Landing() {
                         activeAboutTab === tab.key ? "text-white z-10" : "text-gray-700"
                       }`}
                     >
-                      {tab.label}
+                      {t(tab.label)}
                     </button>
                   ))}
                   <span
@@ -420,7 +233,7 @@ function Landing() {
                 {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link to="/donate" className="bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition-all animate-bounce text-center">
-                    DONATE NOW
+                    {t("DONATE NOW")}
                   </Link>
                   <Link to="/about" className="text-green-600 font-semibold hover:text-green-700 transition-colors flex items-center justify-center gap-2">
                     Learn More
@@ -443,9 +256,9 @@ function Landing() {
               <img src="/assets/second-section.png" alt="Our Impact" className="w-full h-64 md:h-80 lg:h-96 object-cover rounded-lg" />
             </div>
             <div className="w-full lg:w-3/5">
-              <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">Our Impact</h2>
+              <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">{t("Our Impact")}</h2>
               <p className="text-white text-sm md:text-base lg:text-lg leading-relaxed mb-6 md:mb-8">
-                Since our founding, Speed Foundation has planted trees, restored degraded land, and provided clean water access to communities across nigeria. Our community-led conservation projects have protected critical habitats for endangered species and improved biodiversity. Through education and advocacy, we've empowered thousands of individuals to adopt sustainable practices and advocate for stronger environmental policies. Our work has helped communities adapt to climate change impacts, build resilience, and create sustainable livelihoods that protect the environment for future generations.
+                {t("Since our founding, Speed Foundation has planted trees, restored degraded land, and provided clean water access to communities across nigeria. Our community-led conservation projects have protected critical habitats for endangered species and improved biodiversity. Through education and advocacy, we've empowered thousands of individuals to adopt sustainable practices and advocate for stronger environmental policies. Our work has helped communities adapt to climate change impacts, build resilience, and create sustainable livelihoods that protect the environment for future generations.")}
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -460,8 +273,8 @@ function Landing() {
                       <div className="w-3 h-3 rounded-full bg-green-500"></div>
                     </div>
                     <div className="text-white">
-                      <div className="text-xl md:text-2xl font-bold">{stat.title}</div>
-                      <p className="text-xs md:text-sm opacity-90">{stat.desc}</p>
+                      <div className="text-xl md:text-2xl font-bold">{t(stat.title)}</div>
+                      <p className="text-xs md:text-sm opacity-90">{t(stat.desc)}</p>
                     </div>
                   </div>
                 ))}
@@ -476,9 +289,9 @@ function Landing() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
-              <span className="text-green-500">Our</span> Causes
+              <span className="text-green-500">{t("Our")}</span> {t("Causes")}
             </h2>
-            <p className="text-gray-500 text-sm uppercase tracking-wider">We Listen And Advise</p>
+            <p className="text-gray-500 text-sm uppercase tracking-wider">{t("We Listen And Advise")}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -488,9 +301,9 @@ function Landing() {
                 <img src="/assets/climate-change1.jpg" alt="Sustainable Resource" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
               </div>
               <div className="p-6 bg-white group-hover:scale-105 transition-transform duration-300">
-                <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3">Sustainable Resource Management</h3>
+                <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3">{t("Sustainable Resource Management")}</h3>
                 <p className="text-sm leading-relaxed text-gray-600">
-                  We advocate for the responsible use of natural resources, focusing on water conservation and sustainable agriculture. Our programs aim to reduce waste and promote eco-friendly practices that ensure the availability of resources for future generations. Through education and awareness, we empower communities to adopt practices that protect vital resources.
+                  {t("We advocate for the responsible use of natural resources, focusing on water conservation and sustainable agriculture. Our programs aim to reduce waste and promote eco-friendly practices that ensure the availability of resources for future generations. Through education and awareness, we empower communities to adopt practices that protect vital resources.")}
                 </p>
               </div>
             </div>
@@ -501,9 +314,9 @@ function Landing() {
                 <img src="/assets/polution-1.jpeg" alt="Biodiversity" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
               </div>
               <div className="p-6 bg-green-500 group-hover:scale-105 transition-transform duration-300">
-                <h3 className="text-lg md:text-xl font-bold text-white mb-3">Biodiversity Conservation</h3>
+                <h3 className="text-lg md:text-xl font-bold text-white mb-3">{t("Biodiversity Conservation")}</h3>
                 <p className="text-sm leading-relaxed text-white">
-                  Our efforts focus on protecting and restoring ecosystems to support biodiversity. We work on afforestation projects, safeguarding water sources, and preserving critical habitats to protect endangered species. By collaborating with local communities, we aim to enhance biodiversity and maintain ecological balance for a sustainable future.
+                  {t("Our efforts focus on protecting and restoring ecosystems to support biodiversity. We work on afforestation projects, safeguarding water sources, and preserving critical habitats to protect endangered species. By collaborating with local communities, we aim to enhance biodiversity and maintain ecological balance for a sustainable future.")}
                 </p>
               </div>
             </div>
@@ -514,9 +327,9 @@ function Landing() {
                 <img src="/assets/afforestation.jpg" alt="Climate Change" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
               </div>
               <div className="p-6 bg-white group-hover:scale-105 transition-transform duration-300">
-                <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3">Climate Change Adaptation</h3>
+                <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3">{t("Climate Change Adaptation")}</h3>
                 <p className="text-sm leading-relaxed text-gray-600">
-                  We help communities adapt to the impacts of climate change by promoting sustainable agriculture, renewable energy, and water management practices. Our reforestation initiatives play a key role in restoring degraded lands and increasing carbon sequestration. These efforts empower communities to build resilience, reduce environmental risks, and secure sustainable livelihoods.
+                  {t("We help communities adapt to the impacts of climate change by promoting sustainable agriculture, renewable energy, and water management practices. Our reforestation initiatives play a key role in restoring degraded lands and increasing carbon sequestration. These efforts empower communities to build resilience, reduce environmental risks, and secure sustainable livelihoods.")}
                 </p>
               </div>
             </div>
@@ -529,10 +342,10 @@ function Landing() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-white text-xl md:text-2xl lg:text-3xl uppercase tracking-wider mb-2">
-              Ongoing <span className="text-yellow-400">Projects</span>
+              Ongoing <span className="text-yellow-400">{t("Projects")}</span>
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-              You Can Help Lots of People by<br className="hidden md:block" /> Donating Little
+              You Can Help Lots of People by<br className="hidden md:block" /> {t("Donating Little")}
             </h2>
             <div className="w-20 h-1 bg-yellow-400 mx-auto"></div>
           </div>
@@ -541,14 +354,14 @@ function Landing() {
             {projects.map((project, index) => (
               <div key={index} className="bg-white rounded-lg overflow-hidden shadow-lg flex flex-col">
                 <div className="relative h-48 md:h-56">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                  <img src={project.image} alt={t(project.title)} className="w-full h-full object-cover" />
                   <span className="absolute bottom-4 left-4 bg-teal-500 text-white px-4 py-1 rounded text-sm font-semibold">
-                    {project.category}
+                    {t(project.category)}
                   </span>
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3">{project.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">{project.description}</p>
+                  <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3">{t(project.title)}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">{t(project.description)}</p>
                   <div className="mb-4">
                     <div className="flex justify-between text-sm mb-2">
                       <span className="text-gray-700 font-semibold">Raised ₦{project.raised.toLocaleString()}</span>
@@ -578,7 +391,7 @@ function Landing() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">
-              Discover how we're making a <span className="text-green-600">difference</span>
+              Discover how we're making a <span className="text-green-600">{t("difference")}</span>
             </h1>
           </div>
 
@@ -587,13 +400,13 @@ function Landing() {
             {/* Text Content */}
             <div className="lg:col-span-5 bg-white flex flex-col justify-center p-6 md:p-8">
               <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6">
-                Working towards a future where our planet thrives, and all ecosystems are protected for generations to come.
+                {t("Working towards a future where our planet thrives, and all ecosystems are protected for generations to come.")}
               </h2>
               <p className="text-gray-500 text-sm md:text-base mb-6 md:mb-8 leading-relaxed">
-                We are dedicated to creating lasting environmental change through sustainable practices, community empowerment, and biodiversity conservation. Our work focuses on restoring balance between people and nature, ensuring a resilient planet for generations to come.
+                {t("We are dedicated to creating lasting environmental change through sustainable practices, community empowerment, and biodiversity conservation. Our work focuses on restoring balance between people and nature, ensuring a resilient planet for generations to come.")}
               </p>
               <Link to="/about" className="bg-green-800 text-white px-6 md:px-8 py-3 rounded-full w-fit hover:bg-teal-900 transition-all">
-                MORE ABOUT US
+                {t("MORE ABOUT US")}
               </Link>
             </div>
 
@@ -602,11 +415,11 @@ function Landing() {
               <img src="/assets/blog4.jpeg" alt="Mother and child" className="absolute inset-0 w-full h-full object-cover opacity-70" />
               <div className="absolute inset-0 bg-teal-800/40"></div>
               <div className="relative z-10">
-                <h3 className="text-white text-xl md:text-2xl font-bold mb-4">Restoring Ecosystems Through Reforestation</h3>
-                <p className="text-white/80 text-sm md:text-base">We restore degraded lands and enhance biodiversity through reforestation projects that help build a resilient planet.</p>
+                <h3 className="text-white text-xl md:text-2xl font-bold mb-4">{t("Restoring Ecosystems Through Reforestation")}</h3>
+                <p className="text-white/80 text-sm md:text-base">{t("We restore degraded lands and enhance biodiversity through reforestation projects that help build a resilient planet.")}</p>
               </div>
               <Link to="/blog" className="border-2 border-white text-white px-6 md:px-8 py-3 rounded-full w-fit hover:bg-white hover:text-teal-800 transition-all relative z-10">
-                LEARN MORE
+                {t("LEARN MORE")}
               </Link>
             </div>
 
@@ -614,11 +427,11 @@ function Landing() {
             <div className="lg:col-span-4 bg-teal-800 flex flex-col justify-between p-6 md:p-10 relative overflow-hidden min-h-[300px]">
               <img src="/assets/blog3.webp" alt="blog image" className="absolute inset-0 w-full h-full object-cover opacity-60" />
               <div className="relative z-10">
-                <h3 className="text-white text-lg md:text-xl font-bold mb-3 md:mb-4">Empowering Communities to Adapt to Climate Change</h3>
-                <p className="text-white/80 text-sm">We provide education and resources to help communities build resilience against climate change impacts, ensuring a sustainable future for all.</p>
+                <h3 className="text-white text-lg md:text-xl font-bold mb-3 md:mb-4">{t("Empowering Communities to Adapt to Climate Change")}</h3>
+                <p className="text-white/80 text-sm">{t("We provide education and resources to help communities build resilience against climate change impacts, ensuring a sustainable future for all.")}</p>
               </div>
               <Link to="/blog" className="border-2 border-white text-white px-6 md:px-8 py-3 rounded-full w-fit hover:bg-white hover:text-teal-800 transition-all relative z-10 text-sm md:text-base">
-                EXPLORE OUR BLOGS
+                {t("EXPLORE OUR BLOGS")}
               </Link>
             </div>
 
@@ -626,11 +439,11 @@ function Landing() {
             <div className="lg:col-span-4 bg-green-600 flex flex-col justify-between p-6 md:p-10 relative overflow-hidden min-h-[300px]">
               <img src="/assets/blog2.jpg" alt="blog image" className="absolute inset-0 w-full h-full object-cover opacity-60" />
               <div className="relative z-10">
-                <h3 className="text-white text-lg md:text-xl font-bold mb-3 md:mb-4">Protecting Biodiversity for Future Generations</h3>
-                <p className="text-white/80 text-sm">We work to restore habitats and protect endangered species, ensuring biodiversity is preserved for future generations.</p>
+                <h3 className="text-white text-lg md:text-xl font-bold mb-3 md:mb-4">{t("Protecting Biodiversity for Future Generations")}</h3>
+                <p className="text-white/80 text-sm">{t("We work to restore habitats and protect endangered species, ensuring biodiversity is preserved for future generations.")}</p>
               </div>
               <Link to="/blog" className="border-2 border-white text-white px-6 md:px-8 py-3 rounded-full w-fit hover:bg-white hover:text-green-600 transition-all relative z-10 text-sm md:text-base">
-                LEARN MORE
+                {t("LEARN MORE")}
               </Link>
             </div>
 
@@ -638,11 +451,11 @@ function Landing() {
             <div className="lg:col-span-4 bg-orange-600 flex flex-col justify-between p-6 md:p-10 relative overflow-hidden min-h-[300px]">
               <img src="/assets/blog1.jpg" alt="Disaster support" className="absolute inset-0 w-full h-full object-cover opacity-50" />
               <div className="relative z-10">
-                <h3 className="text-white text-lg md:text-xl font-bold mb-3 md:mb-4">Advocating for Stronger Environmental Policies</h3>
-                <p className="text-white/80 text-sm">We work with policymakers to create laws that promote sustainability and environmental protection.</p>
+                <h3 className="text-white text-lg md:text-xl font-bold mb-3 md:mb-4">{t("Advocating for Stronger Environmental Policies")}</h3>
+                <p className="text-white/80 text-sm">{t("We work with policymakers to create laws that promote sustainability and environmental protection.")}</p>
               </div>
               <Link to="/blog" className="border-2 border-white text-white px-6 md:px-8 py-3 rounded-full w-fit hover:bg-white hover:text-orange-600 transition-all relative z-10 text-sm md:text-base">
-                LEARN MORE
+                {t("LEARN MORE")}
               </Link>
             </div>
           </div>
@@ -655,14 +468,14 @@ function Landing() {
           <img src="/assets/hands+plants.png" alt="Newsletter" className="w-full h-full object-cover" />
         </div>
         <div className="relative h-full flex flex-col items-center justify-center text-center px-4 py-12 md:py-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Subscribe to Our Newsletter</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">{t("Subscribe to Our Newsletter")}</h2>
           <p className="text-white text-base md:text-lg mb-6 md:mb-8 max-w-2xl">
-            Stay updated with our latest projects, impact stories, and ways you can make a difference in communities around the world.
+            {t("Stay updated with our latest projects, impact stories, and ways you can make a difference in communities around the world.")}
           </p>
           <div className="w-full max-w-xl">
             <div className="flex flex-col sm:flex-row bg-white rounded-[10px] overflow-hidden">
-              <input type="email" placeholder="Enter your email address" className="flex-1 px-4 md:px-6 py-3 md:py-4 focus:outline-none" />
-              <button className="bg-green-600 text-white font-bold px-6 md:px-8 py-3 md:py-4 whitespace-nowrap hover:bg-green-700 transition-colors">Subscribe</button>
+              <input type="email" placeholder={t("Enter your email address")} className="flex-1 px-4 md:px-6 py-3 md:py-4 focus:outline-none" />
+              <button className="bg-green-600 text-white font-bold px-6 md:px-8 py-3 md:py-4 whitespace-nowrap hover:bg-green-700 transition-colors">{t("Subscribe")}</button>
             </div>
           </div>
         </div>

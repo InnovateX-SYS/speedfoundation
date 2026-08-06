@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useI18n } from "../i18n/LanguageContext";
 
 function Footer() {
+  const { t } = useI18n();
   return (
     <footer className="w-full bg-slate-800 text-white">
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-12">
@@ -17,18 +19,18 @@ function Footer() {
                 />
               </div>
               <span className="text-xl md:text-2xl font-bold text-white">
-                Speed Foundation
+                {t("Speed Foundation")}
               </span>
             </div>
 
             <p className="text-gray-400 text-sm md:text-base">
-              Together for a greener tomorrow
+              {t("Together for a greener tomorrow")}
             </p>
           </div>
 
           {/* Links */}
           <div>
-            <h3 className="text-lg md:text-xl font-bold mb-4 md:mb-6">Home</h3>
+            <h3 className="text-lg md:text-xl font-bold mb-4 md:mb-6">{t("Home")}</h3>
             <ul className="space-y-2 md:space-y-3">
               {[
                 { label: "About Us", to: "/about" },
@@ -36,12 +38,12 @@ function Footer() {
                 { label: "Blog", to: "/blog" },
                 { label: "Contact", to: "/contact" },
               ].map((link) => (
-                <li key={link.label}>
+                <li key={t(link.label)}>
                   <Link
                     to={link.to}
                     className="text-gray-400 hover:text-white transition-colors text-sm md:text-base"
                   >
-                    {link.label}
+                    {t(link.label)}
                   </Link>
                 </li>
               ))}
@@ -51,7 +53,7 @@ function Footer() {
           {/* Contact */}
           <div>
             <h3 className="text-lg md:text-xl font-bold mb-4 md:mb-6">
-              Contact
+              {t("Contact")}
             </h3>
             <ul className="space-y-3 md:space-y-4 text-sm md:text-base">
               <li className="flex items-start gap-2 md:gap-3 text-gray-400">
@@ -74,7 +76,7 @@ function Footer() {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                26, Allison Street, Ikorodu, Lagos, Nigeria
+                {t("26, Allison Street, Ikorodu, Lagos, Nigeria")}
               </li>
               <li className="flex items-center gap-2 md:gap-3 text-gray-400">
                 <svg
@@ -106,10 +108,10 @@ function Footer() {
                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                   />
                 </svg>
-                Speedfoundationnig@gmail.com
+                {t("Speedfoundationnig@gmail.com")}
               </li>
               <li className="flex items-center gap-2 md:gap-3 text-gray-400 ml-9">
-                info@speedfoundationnig.org
+                {t("info@speedfoundationnig.org")}
               </li>
             </ul>
           </div>
@@ -117,7 +119,7 @@ function Footer() {
           {/* Social */}
           <div>
             <h3 className="text-lg md:text-xl font-bold mb-4 md:mb-6">
-              Follow Us
+              {t("Follow Us")}
             </h3>
             <div className="flex gap-3 md:gap-4 mb-4 md:mb-6">
               <a
@@ -173,14 +175,14 @@ function Footer() {
               to="/donate"
               className="inline-block bg-green-500 hover:bg-green-600 text-white font-bold px-6 md:px-8 py-2 md:py-3 rounded-lg transition-colors text-sm md:text-base"
             >
-              Donate
+              {t("Donate")}
             </Link>
           </div>
         </div>
 
         <div className="border-t border-slate-700 pt-6">
           <p className="text-center text-gray-400 text-sm md:text-base">
-            © 2026 Speed Foundation. All rights reserved.
+            {t("© 2026 Speed Foundation. All rights reserved.")}
           </p>
         </div>
       </div>

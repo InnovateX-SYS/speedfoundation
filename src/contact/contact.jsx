@@ -307,7 +307,7 @@ const Contact = () => {
                   onClick={handleSubmit}
                   className="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-4 rounded-xl transition-all duration-300 text-sm flex items-center justify-center gap-2 group"
                 >
-                  Send Message
+                  {t("Send Message")}
                   <svg
                     className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
                     fill="none"
@@ -395,7 +395,7 @@ const Contact = () => {
               rel="noopener noreferrer"
               className="bg-green-600 hover:bg-green-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors flex items-center gap-2"
             >
-              Get Directions
+              {t("Get Directions")}
               <svg
                 className="w-3.5 h-3.5"
                 fill="none"

@@ -72,7 +72,7 @@ const AREAS = [
 ];
 
 const ROLES = [
-  { badge: "ON-SITE", onSite: true,  title: "Tree Planting Coordinator",  location: "Nairobi, Kenya / Amazon Basin", desc: "Lead local communities in reforestation events and maintain nursery health in our regional hubs." },
+  { badge: "ON-SITE", onSite: true,  title: "Tree Planting Coordinator",  location: "Cross River, Nigeria"      , desc: "Lead local communities in reforestation events and maintain nursery health in our regional hubs." },
   { badge: "REMOTE",  onSite: false, title: "Policy Advocate",            location: "Nigeria / Remote",            desc: "Research environmental policies and help draft advocacy letters for local and international government bodies." },
   { badge: "REMOTE",  onSite: false, title: "Digital Educator",           location: "Nigeria / Remote",            desc: "Produce engaging content about climate change for our digital platforms and nigerian audience." },
   { badge: "ON-SITE", onSite: true,  title: "Water & Sanitation Officer", location: "Kano, Nigeria",                 desc: "Support communities with borehole projects, water purification systems, and hygiene education." },
@@ -107,7 +107,7 @@ function ApplyModal({ role, onClose }) {
                 {t(role.badge)}
               </span>
               <h3 className="text-2xl font-bold text-gray-900 leading-tight">
-                Apply for<br />{t(role.title)}
+                {t("Apply for")}<br />{t(role.title)}
               </h3>
               <p className="text-xs text-gray-400 mt-1">📍 {role.location}</p>
             </div>
@@ -162,7 +162,7 @@ function ApplyModal({ role, onClose }) {
             </div>
             <h3 className="text-2xl font-bold text-gray-900 mb-2">{t("Application sent!")}</h3>
             <p className="text-sm text-gray-600 leading-relaxed mb-1">
-              Thanks, <strong>{name.split(" ")[0]}</strong>. We'll review your application and get back to you at <strong>{email}</strong> {t("within 3–5 business days.")}
+              {t("Thanks,")} <strong>{name.split(" ")[0]}</strong>. We'll review your application and get back to you at <strong>{email}</strong> {t("within 3–5 business days.")}
             </p>
             <p className="text-sm text-green-600 italic mb-6">{t("Together we're making nigeria greener. 🌿")}</p>
             <button
@@ -180,7 +180,7 @@ function ApplyModal({ role, onClose }) {
 
 // ── Main Page ──────────────────────────────────────────────────────────────
 export default function Volunteer() {
-  const [language,   setLanguage]   = React.useState("English");
+  const { t } = useI18n();
   const [showAll,    setShowAll]    = React.useState(false);
   const [applying,   setApplying]   = React.useState(null);
 
@@ -191,7 +191,7 @@ export default function Volunteer() {
       <Nav />
 
       {/* ── HERO ── */}
-      <div className="relative" style={{ paddingBottom: "80px" }}>
+      <div className="relative">
         <div className="relative overflow-hidden" style={{ height: "76vh", minHeight: 520 }}>
           <img
             src="/assets/Environment-Day.jpg"
@@ -217,7 +217,7 @@ export default function Volunteer() {
               className="text-white font-extrabold leading-none mb-4 tracking-tight"
               style={{ fontSize: "clamp(2.2rem, 5.5vw, 4.2rem)" }}
             >
-              Be the Change<br />
+              {t("Be the Change")}<br />
               <span className="text-green-400">{t("the Earth Needs")}</span>
             </h1>
 
@@ -247,7 +247,7 @@ export default function Volunteer() {
 
         {/* ── STATS CARD ── */}
         <div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 bg-white rounded-2xl shadow-2xl overflow-hidden grid grid-cols-2 sm:grid-cols-4"
+          className="relative z-10 mx-auto -mt-16 bg-white rounded-2xl shadow-2xl overflow-hidden grid grid-cols-2 sm:grid-cols-4"
           style={{ width: "calc(100% - 48px)", maxWidth: 860 }}
         >
           {STATS.map((s) => (

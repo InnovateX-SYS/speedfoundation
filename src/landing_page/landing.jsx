@@ -216,17 +216,17 @@ function Landing() {
                 {/* Tab Content */}
                 <div className="mb-6">
                   <h3 className="text-2xl md:text-3xl font-bold text-green-700 mb-4">
-                    {activeAboutTab === "aboutus" && "About Us"}
-                    {activeAboutTab === "mission" && "Our Mission"}
-                    {activeAboutTab === "vision" && "Our Vision"}
+                    {activeAboutTab === "aboutus" && t("About Us")}
+                    {activeAboutTab === "mission" && t("Our Mission")}
+                    {activeAboutTab === "vision" && t("Our Vision")}
                   </h3>
                   <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                     {activeAboutTab === "aboutus" &&
-                      "Speed Foundation exists because nigeria's land, water, and people are quietly asking for help. Across the country, climate change, pollution, environmental loss, and water scarcity are threatening lives and livelihoods. We believe caring for nigeria's environment is a shared responsibility to today's communities and future generations. Driven by compassion and urgency, we restore ecosystems and protect the land and water people depend on. Through reforestation, water conservation, and climate-resilient solutions, we help communities adapt and endure. At Speed Foundation, we are nurturing a healthier, more resilient nigeria—together."}
+                      t("Speed Foundation exists because nigeria's land, water, and people are quietly asking for help. Across the country, climate change, pollution, environmental loss, and water scarcity are threatening lives and livelihoods. We believe caring for nigeria's environment is a shared responsibility to today's communities and future generations. Driven by compassion and urgency, we restore ecosystems and protect the land and water people depend on. Through reforestation, water conservation, and climate-resilient solutions, we help communities adapt and endure. At Speed Foundation, we are nurturing a healthier, more resilient nigeria—together.")}
                     {activeAboutTab === "mission" &&
-                      "We protect and restore ecosystems by partnering with communities, governments, and conservation groups to preserve habitats and biodiversity. We promote green, inclusive economic growth through sustainable livelihoods like eco-tourism, organic farming, and responsible forestry. Through education, outreach, and policy advocacy, we empower individuals and stakeholders to adopt sustainable practices and support environmental protection. We lead reforestation and land rehabilitation projects, advance research on innovative sustainability solutions, and tackle pollution and waste to create healthier, resilient communities for future generations."}
+                      t("We protect and restore ecosystems by partnering with communities, governments, and conservation groups to preserve habitats and biodiversity. We promote green, inclusive economic growth through sustainable livelihoods like eco-tourism, organic farming, and responsible forestry. Through education, outreach, and policy advocacy, we empower individuals and stakeholders to adopt sustainable practices and support environmental protection. We lead reforestation and land rehabilitation projects, advance research on innovative sustainability solutions, and tackle pollution and waste to create healthier, resilient communities for future generations.")}
                     {activeAboutTab === "vision" &&
-                      "We envision a world where communities live in harmony with nature—where economic progress does not come at the cost of environmental destruction, and where future generations inherit a planet that is resilient, diverse, and full of opportunity. Our commitment is long-term. Our approach is collaborative. And our impact is rooted in empowering people to protect the environment not just because they must—but because they understand its value to their lives, livelihoods, and future."}
+                      t("We envision a world where communities live in harmony with nature—where economic progress does not come at the cost of environmental destruction, and where future generations inherit a planet that is resilient, diverse, and full of opportunity. Our commitment is long-term. Our approach is collaborative. And our impact is rooted in empowering people to protect the environment not just because they must—but because they understand its value to their lives, livelihoods, and future.")}
                   </p>
                 </div>
 
@@ -236,7 +236,7 @@ function Landing() {
                     {t("DONATE NOW")}
                   </Link>
                   <Link to="/about" className="text-green-600 font-semibold hover:text-green-700 transition-colors flex items-center justify-center gap-2">
-                    Learn More
+                    {t("Learn More")}
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
@@ -345,7 +345,7 @@ function Landing() {
               Ongoing <span className="text-yellow-400">{t("Projects")}</span>
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-              You Can Help Lots of People by<br className="hidden md:block" /> {t("Donating Little")}
+              {t("You Can Help Lots of People by")}<br className="hidden md:block" /> {t("Donating Little")}
             </h2>
             <div className="w-20 h-1 bg-yellow-400 mx-auto"></div>
           </div>
@@ -376,7 +376,7 @@ function Landing() {
                     <p className="text-xs text-gray-500 mt-1 text-right">{project.percentage}%</p>
                   </div>
                   <Link to="/donate" className="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-6 rounded text-center transition-colors flex items-center justify-center gap-2">
-                    Donate Now
+                    {t("Donate Now")}
                     <img src="/assets/volunteer-icon2.png" alt="Volunteer Icon" className="w-7 h-7" />
                   </Link>
                 </div>
@@ -391,7 +391,7 @@ function Landing() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">
-              Discover how we're making a <span className="text-green-600">{t("difference")}</span>
+              {t("Discover how we're making a")} <span className="text-green-600">{t("difference")}</span>
             </h1>
           </div>
 

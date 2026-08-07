@@ -365,7 +365,6 @@ const TRUST = [
 
 export default function Donate() {
   const { t } = useI18n();
-  const [language, setLanguage]     = React.useState("English");
   const [freq, setFreq]             = React.useState("once");
   const [selected, setSelected]     = React.useState(null);
   const [custom, setCustom]         = React.useState("");
@@ -414,7 +413,7 @@ export default function Donate() {
               <span className="fu label-sm" style={{ color: "#86efac", marginBottom: 14, display: "block" }}>
                 {t("Speed Foundation — Donate")}
               </span>
-              <h1 className="fu d1 hero-title">Help Us Heal<br />{t("nigeria's Land")}</h1>
+              <h1 className="fu d1 hero-title">{t("Help Us Heal")}<br />{t("nigeria's Land")}</h1>
               <p className="fu d2 hero-body" style={{ maxWidth: 420 }}>
                 {t("We plant trees, restore water sources, and train communities across nigeria. Real, lasting change.")}
               </p>
@@ -600,7 +599,7 @@ export default function Donate() {
                         Thank you{name ? `, ${name.split(" ")[0]}` : ""}
                       </p>
                       <p style={{ fontSize: "0.82rem", color: "#374151", lineHeight: 1.65, marginBottom: 4 }}>
-                        We'll confirm your transfer within 24 hours and send a receipt to <strong>{email || "your email"}</strong>.
+                        {t("We'll confirm your transfer within 24 hours and send a receipt to")} <strong>{email || "your email"}</strong>.
                       </p>
                       <p style={{ fontSize: "0.78rem", color: "#16a34a", fontStyle: "italic" }}>
                         {t("Because of you, nigeria's land heals a little more today. 🌿")}
@@ -628,10 +627,10 @@ export default function Donate() {
                     Thank you{name ? `, ${name.split(" ")[0]}` : ""}!
                   </h3>
                   <p style={{ color: "#374151", marginBottom: 5, fontSize: "0.93rem" }}>
-                    Your donation of <strong>{displayAmt}</strong> {t("was received.")}
+                    {t("Your donation of")} <strong>{displayAmt}</strong> {t("was received.")}
                   </p>
                   <p style={{ color: "#9ca3af", fontSize: "0.83rem", marginBottom: 8 }}>
-                    Receipt sent to <strong>{email}</strong>
+                    {t("Receipt sent to")} <strong>{email}</strong>
                   </p>
                   <p style={{ fontSize: "0.84rem", color: "#15803d", fontStyle: "italic", marginBottom: 26 }}>
                     {t("Because of you, nigeria's land heals a little more today. 🌿")}

@@ -266,7 +266,7 @@ const Blog = () => {
                   : "bg-white text-gray-600 border-gray-200 hover:border-green-400 hover:text-green-600"
               }`}
             >
-              {cat}
+              {t(cat)}
             </button>
           ))}
         </div>

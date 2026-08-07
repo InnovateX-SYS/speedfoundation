@@ -108,7 +108,7 @@ const About = () => {
                 </div>
                 <div className="mt-8">
                   <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
-                    Act with <br />
+                    {t("Act with")} <br />
                     {t("Purpose")}
                   </h3>
                   <p className="text-white/80 text-sm md:text-base leading-relaxed mb-6">
@@ -136,7 +136,7 @@ const About = () => {
                             />
                           </svg>
                         </div>
-                        <span className="text-white/90 text-sm">{point}</span>
+                        <span className="text-white/90 text-sm">{t(point)}</span>
                       </div>
                     ))}
                   </div>
@@ -327,7 +327,7 @@ const About = () => {
                         key={i}
                         className="text-xs text-green-700 border border-green-200 bg-green-50 px-3 py-1 rounded-full"
                       >
-                        {skill}
+                        {t(skill)}
                       </span>
                     ))}
                   </div>

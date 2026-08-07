@@ -358,7 +358,7 @@ const Project = () => {
                   : "bg-white text-gray-600 border-gray-200 hover:border-green-400 hover:text-green-600"
               }`}
             >
-              {cat}
+              {t(cat)}
             </button>
           ))}
         </div>
@@ -370,7 +370,7 @@ const Project = () => {
 
           {/* Count label */}
           <p className="text-gray-500 text-sm mb-6">
-            Page <span className="font-semibold text-gray-800">{currentPage}</span> of{" "}
+            {t("Page")} <span className="font-semibold text-gray-800">{currentPage}</span> {t("of")}{" "}
             <span className="font-semibold text-gray-800">{totalPages}</span> — {filtered.length} total projects
             {activeCategory !== "All Projects" && (
               <span> in <span className="text-green-600 font-semibold">{activeCategory}</span></span>

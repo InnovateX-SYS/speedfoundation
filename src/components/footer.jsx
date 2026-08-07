@@ -38,7 +38,7 @@ function Footer() {
                 { label: "Blog", to: "/blog" },
                 { label: "Contact", to: "/contact" },
               ].map((link) => (
-                <li key={t(link.label)}>
+                <li key={link.label}>
                   <Link
                     to={link.to}
                     className="text-gray-400 hover:text-white transition-colors text-sm md:text-base"

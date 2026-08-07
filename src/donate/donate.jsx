@@ -442,14 +442,14 @@ export default function Donate() {
         <div style={{ background: "#fff", borderBottom: "1px solid #e5e7eb" }}>
           <div style={{ maxWidth: 1060, margin: "0 auto", padding: "0 16px" }}>
             <div className="trust-bar">
-              {TRUST.map((t) => (
-                <div key={t(t.title)} className="trust-item">
+              {TRUST.map((item) => (
+                <div key={item.title} className="trust-item">
                   <div style={{ width: 44, height: 44, borderRadius: 10, background: "#f0fdf4", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    {t.svg}
+                    {item.svg}
                   </div>
                   <div>
-                    <p style={{ fontSize: "0.86rem", fontWeight: 700, color: "#111", marginBottom: 1 }}>{t(t.title)}</p>
-                    <p style={{ fontSize: "0.72rem", color: "#6b7280" }}>{t(t.sub)}</p>
+                    <p style={{ fontSize: "0.86rem", fontWeight: 700, color: "#111", marginBottom: 1 }}>{t(item.title)}</p>
+                    <p style={{ fontSize: "0.72rem", color: "#6b7280" }}>{t(item.sub)}</p>
                   </div>
                 </div>
               ))}
@@ -484,7 +484,7 @@ export default function Donate() {
 
                   <div className="amt-grid">
                     {AMOUNTS.map(a => (
-                      <button key={t(a.val)} className={`amt ${selected===a.val&&!custom?"on":""}`}
+                      <button key={a.val} className={`amt ${selected===a.val&&!custom?"on":""}`}
                         onClick={() => handlePresetClick(a.val)}>
                         <div style={{ fontWeight: 500, fontSize: "1.40rem", marginBottom: 9, color: selected===a.val&&!custom?"#fff":"#111" }}>
                           {t(a.display)}
@@ -687,7 +687,7 @@ export default function Donate() {
                   { label: "Research",           pct: 6,  color: "#86efac" },
                   { label: "Operations",         pct: 4,  color: "#d1fae5" },
                 ].map(b => (
-                  <div key={t(b.label)} style={{ marginBottom: 10 }}>
+                  <div key={b.label} style={{ marginBottom: 10 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
                       <span style={{ fontSize: "0.8rem", color: "#374151" }}>{t(b.label)}</span>
                       <span style={{ fontSize: "0.8rem", fontWeight: 700, color: "#111" }}>{b.pct}%</span>
@@ -710,7 +710,7 @@ export default function Donate() {
             { src: "/assets/Regreening-nigeria.jpg",       label: "Land Restoration" },
             { src: "/assets/Environment-Day.jpg",         label: "Community Events" },
           ].map(img => (
-            <div key={t(img.label)} className="ph" style={{ position: "relative", overflow: "hidden" }}>
+            <div key={img.label} className="ph" style={{ position: "relative", overflow: "hidden" }}>
               <img src={img.src} alt={t(img.label)} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "flex-end", padding: 12, background: "rgba(0,0,0,0)", transition: "background 0.3s" }}
                 onMouseEnter={e => e.currentTarget.style.background = "rgba(0,0,0,0.42)"}
@@ -735,7 +735,7 @@ export default function Donate() {
                 { stat: "Farmers Trained", label: "Climate-smart agriculture skills",          img: "/assets/school-farming.jpg" },
                 { stat: "States Reached",  label: "Projects running across nigeria",           img: "/assets/Regreening-nigeria.jpg" },
               ].map(item => (
-                <div key={t(item.label)} style={{ borderRadius: 12, overflow: "hidden", border: "1px solid #e5e7eb" }}>
+                <div key={item.label} style={{ borderRadius: 12, overflow: "hidden", border: "1px solid #e5e7eb" }}>
                   <div className="ph" style={{ height: 100, overflow: "hidden" }}>
                     <img src={item.img} alt={t(item.label)} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   </div>

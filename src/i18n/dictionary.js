@@ -4,6 +4,7 @@ import { CONTENT } from "./content";
 import { DATA } from "./data";
 import { STORIES } from "./stories";
 import { ROLES } from "./roles";
+import { TABS } from "./tabs";
 
 export const LANGUAGES = ["English", "Igbo", "Yoruba", "French"];
 
@@ -16,6 +17,6 @@ export const LOCALES = {
 };
 
 // One flat lookup keyed by the English source string.
-export const DICTIONARY = { ...UI, ...PAGES, ...CONTENT, ...DATA, ...STORIES, ...ROLES };
+export const DICTIONARY = { ...UI, ...PAGES, ...CONTENT, ...DATA, ...STORIES, ...ROLES, ...TABS };
 
 export default DICTIONARY;

@@ -109,7 +109,7 @@ function ApplyModal({ role, onClose }) {
               <h3 className="text-2xl font-bold text-gray-900 leading-tight">
                 {t("Apply for")}<br />{t(role.title)}
               </h3>
-              <p className="text-xs text-gray-400 mt-1">📍 {role.location}</p>
+              <p className="text-xs text-gray-400 mt-1">📍 {t(role.location)}</p>
             </div>
 
             <div className="flex flex-col gap-3 mb-4">
@@ -206,7 +206,9 @@ export default function Volunteer() {
           />
 
           {/* Hero text */}
-          <div className="absolute inset-0 flex flex-col justify-center px-[5vw] max-w-2xl">
+          {/* pb reserves the strip the stats card overlaps, so longer
+              translations never push the CTAs under it */}
+          <div className="absolute inset-0 flex flex-col justify-center px-[5vw] pb-28 max-w-2xl">
             {/* pill */}
             <div className="inline-flex items-center gap-1.5 bg-green-500/20 border border-green-500/40 text-green-400 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 w-fit">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block" />
@@ -251,7 +253,7 @@ export default function Volunteer() {
           style={{ width: "calc(100% - 48px)", maxWidth: 860 }}
         >
           {STATS.map((s) => (
-            <div key={t(s.label)} className="py-8 px-4 text-center">
+            <div key={s.label} className="py-8 px-4 text-center">
               <div
                 className="text-green-600 font-extrabold leading-none mb-2"
                 style={{ fontSize: "clamp(1.05rem, 2.2vw, 1.4rem)" }}
@@ -296,7 +298,7 @@ export default function Volunteer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
           {AREAS.map(area => (
             <div
-              key={t(area.title)}
+              key={area.title}
               className="bg-white border border-gray-200 rounded-2xl p-6 hover:border-green-500 hover:shadow-lg hover:shadow-green-600/10 hover:-translate-y-1 transition-all duration-200"
             >
               <div
@@ -329,7 +331,7 @@ export default function Volunteer() {
               { val: "CO₂ Offset",        label: "Emissions absorbed" },
             ].map((s, i) => (
               <div
-                key={t(s.label)}
+                key={s.label}
                 className="py-7 px-5 text-center"
                 style={{
                   borderRight: i % 2 === 0 ? "1px solid rgba(255,255,255,0.07)" : "none",
@@ -382,7 +384,7 @@ export default function Volunteer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {visibleRoles.map(role => (
             <div
-              key={t(role.title)}
+              key={role.title}
               className="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-200"
             >
               <div className="flex justify-between items-center mb-3.5">
@@ -405,7 +407,7 @@ export default function Volunteer() {
 
               <div className="flex items-center gap-1 text-gray-400 text-xs mb-5">
                 <PinIcon />
-                {role.location}
+                {t(role.location)}
               </div>
 
               <button
